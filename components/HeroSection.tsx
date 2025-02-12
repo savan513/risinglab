@@ -1,6 +1,6 @@
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
@@ -18,16 +18,22 @@ export function HeroSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <span className="text-gold font-serif">Jenny Diamonds</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-gold font-serif">RISING LAB DIAMONDS</span>
             <h1 className="text-5xl md:text-7xl font-serif mt-4 mb-6">
               diamonds & <br />
               <span className="text-gradient">JEWELLERY</span>
             </h1>
             <p className="text-2xl md:text-3xl font-serif mb-8">STORE</p>
             <p className="text-lg text-gray-300 mb-8 max-w-xl">
-              Jenny Diamonds offers a carefully curated selection of exceptional diamonds and jewellery. With a focus on
-              quality and craftsmanship, each piece is designed to reflect timeless elegance and beauty.
+              Rising Lab Diamonds offers a carefully curated selection of
+              exceptional diamonds and jewellery. With a focus on quality and
+              craftsmanship, each piece is designed to reflect timeless elegance
+              and beauty.
             </p>
             <Button size="lg" className="bg-gold hover:bg-gold-dark text-black">
               Explore Collection
@@ -36,6 +42,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

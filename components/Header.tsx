@@ -1,115 +1,137 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { Search, Heart, Menu, X, Sun, Moon, ChevronDown } from "lucide-react"
-import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, Heart, Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/store/store";
 
 type DropdownItem = {
   label: string;
   href: string;
-}
-
-const diamondDropdownItems: DropdownItem[] = [
-  { href: "/diamonds/diamond-1", label: "Diamond 1" },
-  { href: "/diamonds/diamond-2", label: "Diamond 2" },
-  { href: "/diamonds/diamond-3", label: "Diamond 3" },
-  { href: "/diamonds/diamond-4", label: "Diamond 4" },
-  { href: "/diamonds/diamond-5", label: "Diamond 5" },
-]
-
-const jewelleryDropdownItems: DropdownItem[] = [
-  { href: "/jewellery/jewellery-1", label: "Jewellery 1" },
-  { href: "/jewellery/jewellery-2", label: "Jewellery 2" },
-  { href: "/jewellery/jewellery-3", label: "Jewellery 3" },
-  { href: "/jewellery/jewellery-4", label: "Jewellery 4" },
-  { href: "/jewellery/jewellery-5", label: "Jewellery 5" },
-]
-
-const navItems = [
-  { href: "/", label: "HOME" },
-  { 
-    href: "/diamonds", 
-    label: "DIAMONDS",
-    hasDropdown: true,
-    dropdownItems: diamondDropdownItems 
-  },
-  { 
-    href: "/jewellery", 
-    label: "JEWELLERY",
-    hasDropdown: true,
-    dropdownItems: jewelleryDropdownItems 
-  },
-  { href: "/about", label: "ABOUT US" },
-  { href: "/contact", label: "CONTACT US" },
-  { href: "/blog", label: "BLOG" },
-]
+};
 
 export function Header() {
-  const [mounted, setMounted] = useState(false)
-  const [showSearch, setShowSearch] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  // Useselector
+  const { loading, fetchDiamondCategoryData, fetchJewelleryCategoryData } =
+    useSelector((state: RootState) => ({
+      fetchDiamondCategoryData: state?.diamond?.fetchDiamondCategoryData,
+      fetchJewelleryCategoryData: state?.jewellery?.fetchJewelleryCategoryData,
+      loading: state?.diamond?.loading,
+    }));
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
 
     const handleScroll = () => {
-      const isScrolled = window.scrollY > window.innerHeight * 0.1 // 10vh threshold
-      setScrolled(isScrolled)
-    }
+      const isScrolled = window.scrollY > window.innerHeight * 0.1; // 10vh threshold
+      setScrolled(isScrolled);
+    };
 
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
-  const logoUrl = theme === "dark"
-    ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-02.jpg-97rUotvzZpqyNoTmClxxu8AqWQFv8U.jpeg"
-    : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-01-mKZcU6Fueji9gDFperhAX0SmrKrHlS.png"
+  const logoUrl =
+    theme === "dark"
+      ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-02.jpg-97rUotvzZpqyNoTmClxxu8AqWQFv8U.jpeg"
+      : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-01-mKZcU6Fueji9gDFperhAX0SmrKrHlS.png";
 
   const handleNavItemClick = () => {
-    setIsMenuOpen(false)
-  }
+    setIsMenuOpen(false);
+  };
+
+  // Transform Diamond Categories into Dropdown Items
+  const diamondDropdownItems: DropdownItem[] = fetchDiamondCategoryData
+    ? fetchDiamondCategoryData.map(
+        (item: { _id: string; slug: string; name: string }) => ({
+          href: `/diamond/${item?.slug}`,
+          label: item.name,
+        })
+      )
+    : [];
+
+  // Transform jewellery Categories into Dropdown Items
+  const jewelleryDropdownItems: DropdownItem[] = fetchJewelleryCategoryData
+    ? fetchJewelleryCategoryData.map(
+        (item: { _id: string; slug: string; name: string }) => ({
+          href: `/jewellery/${item?.slug}`,
+          label: item.name,
+        })
+      )
+    : [];
+
+  const navItems = [
+    { href: "/", label: "HOME" },
+    {
+      href: "/diamond",
+      label: "DIAMONDS",
+      hasDropdown: true,
+      dropdownItems: diamondDropdownItems,
+    },
+    {
+      href: "/jewellery",
+      label: "JEWELLERY",
+      hasDropdown: true,
+      dropdownItems: jewelleryDropdownItems,
+    },
+    { href: "/about", label: "ABOUT US" },
+    { href: "/contact", label: "CONTACT US" },
+    { href: "/blog", label: "BLOG" },
+  ];
 
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 
-        ${scrolled 
-          ? 'bg-background shadow-lg backdrop-blur-md border-b border-gold/20' 
-          : 'bg-gradient-to-b from-background/10 to-background/60 backdrop-blur-sm'
+        ${
+          scrolled
+            ? "bg-background shadow-lg backdrop-blur-md border-b border-gold/20"
+            : "bg-gradient-to-b from-background/10 to-background/60 backdrop-blur-sm"
         }
         transition-all duration-500 ease-in-out`}
     >
-      <div 
+      <div
         className={`absolute inset-0 transition-opacity duration-500
-          ${scrolled ? 'opacity-95' : 'opacity-80'}
-          bg-gradient-to-b from-background via-background/95 to-background/90`} 
+          ${scrolled ? "opacity-95" : "opacity-80"}
+          bg-gradient-to-b from-background via-background/95 to-background/90`}
       />
-      
+
       <div className="container mx-auto px-4 relative">
-        <div 
+        <div
           className={`flex items-center justify-between transition-all duration-300 ease-in-out
-            ${scrolled ? 'h-14 md:h-18' : 'h-18 md:h-22'}`}
+            ${scrolled ? "h-18 md:h-18" : "h-18 md:h-22"}`}
         >
           {/* Enhanced Logo Section */}
           <div className="flex items-center relative">
             <Link href="/" className="flex items-center space-x-3 group">
-              <motion.div 
+              <motion.div
                 className={`relative transition-all duration-300
-                  ${scrolled 
-                    ? 'w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16' 
-                    : 'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20'
+                  ${
+                    scrolled
+                      ? "w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16"
+                      : "w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20"
                   }`}
                 whileHover={{ scale: 1.05 }}
               >
@@ -124,17 +146,18 @@ export function Header() {
                 />
               </motion.div>
               <div className="hidden sm:flex flex-col">
-                <motion.span 
+                <motion.span
                   className={`font-serif text-gold transition-all duration-300
-                    ${scrolled 
-                      ? 'text-base md:text-lg lg:text-xl' 
-                      : 'text-lg md:text-xl lg:text-2xl'
+                    ${
+                      scrolled
+                        ? "text-base md:text-lg lg:text-xl"
+                        : "text-lg md:text-xl lg:text-2xl"
                     }`}
                   // whileHover={{ color: 'var(--gold)' }}
                 >
-                  The Rise Of
+                  RISING LAB
                 </motion.span>
-                <motion.span 
+                {/* <motion.span 
                   className={`text-muted-foreground font-medium transition-all duration-300
                     ${scrolled 
                       ? 'text-xs md:text-sm lg:text-base' 
@@ -142,7 +165,7 @@ export function Header() {
                     }`}
                 >
                   Lab Grown Diamond
-                </motion.span>
+                </motion.span> */}
               </div>
             </Link>
           </div>
@@ -150,7 +173,7 @@ export function Header() {
           {/* Updated Navigation with better responsive dropdowns */}
           <nav className="hidden lg:flex items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
             {navItems.map((item) => (
-              <motion.div 
+              <motion.div
                 key={item.href}
                 className="relative group"
                 whileHover={{ y: -2 }}
@@ -158,9 +181,10 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={`text-sm tracking-wide transition-all duration-300 flex items-center
-                    ${scrolled 
-                      ? 'text-foreground hover:text-gold' 
-                      : 'text-foreground/90 hover:text-gold'
+                    ${
+                      scrolled
+                        ? "text-foreground hover:text-gold"
+                        : "text-foreground/90 hover:text-gold"
                     }`}
                 >
                   {item.label}
@@ -171,9 +195,11 @@ export function Header() {
 
                 {/* Enhanced Responsive Dropdown Menu */}
                 {item.hasDropdown && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible 
-                    group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                    <motion.div 
+                  <div
+                    className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible 
+                    group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+                  >
+                    <motion.div
                       initial={{ y: 10, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       className="bg-background/95 backdrop-blur-md border border-gold/20 
@@ -184,10 +210,10 @@ export function Header() {
                         <motion.div
                           key={dropdownItem.href}
                           initial={{ x: -10, opacity: 0 }}
-                          animate={{ 
-                            x: 0, 
+                          animate={{
+                            x: 0,
                             opacity: 1,
-                            transition: { delay: index * 0.05 } 
+                            transition: { delay: index * 0.05 },
                           }}
                         >
                           <Link
@@ -195,7 +221,9 @@ export function Header() {
                             className="block px-4 py-2 text-sm hover:bg-gold/10 hover:text-gold 
                               transition-colors relative group/item whitespace-nowrap"
                           >
-                            <span className="relative z-10">{dropdownItem.label}</span>
+                            <span className="relative z-10">
+                              {dropdownItem.label}
+                            </span>
                             <motion.div
                               className="absolute inset-0 bg-gold/5 opacity-0 group-hover/item:opacity-100 
                                 transition-opacity duration-200"
@@ -214,14 +242,28 @@ export function Header() {
           {/* Right side buttons with improved scaling */}
           <div className="flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.1 }}>
-              <Button variant="ghost" size="icon" onClick={() => setShowSearch(!showSearch)} 
-                className={`hover:text-gold transition-transform ${scrolled ? 'scale-90' : 'scale-100'}`}>
-                {showSearch ? <X className="h-5 w-5" /> : <Search className="h-5 w-5" />}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setShowSearch(!showSearch)}
+                className={`hover:text-gold transition-transform ${
+                  scrolled ? "scale-90" : "scale-100"
+                }`}
+              >
+                {showSearch ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Search className="h-5 w-5" />
+                )}
               </Button>
             </motion.div>
             <Link href="/wishlist">
               <motion.div whileHover={{ scale: 1.1 }}>
-                <Button variant="ghost" size="icon" className="hover:text-gold relative group">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-gold relative group"
+                >
                   <Heart className="h-5 w-5 group-hover:fill-gold transition-colors" />
                   <span className="sr-only">Wishlist</span>
                 </Button>
@@ -234,7 +276,11 @@ export function Header() {
                 onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                 className="hover:text-gold"
               >
-                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
               </Button>
             </motion.div>
 
@@ -246,8 +292,8 @@ export function Header() {
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent 
-                  side="right" 
+                <SheetContent
+                  side="right"
                   className="w-full sm:w-[300px] bg-background overflow-y-auto"
                 >
                   <SheetHeader>
@@ -282,8 +328,10 @@ export function Header() {
                               onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                const element = document.getElementById(`dropdown-${item.label}`);
-                                element?.classList.toggle('hidden');
+                                const element = document.getElementById(
+                                  `dropdown-${item.label}`
+                                );
+                                element?.classList.toggle("hidden");
                               }}
                             >
                               <ChevronDown className="h-4 w-4" />
@@ -291,7 +339,7 @@ export function Header() {
                           )}
                         </div>
                         {item.hasDropdown && (
-                          <div 
+                          <div
                             id={`dropdown-${item.label}`}
                             className="hidden pl-4 border-l border-gold/20 ml-4 mt-2 space-y-2"
                           >
@@ -322,15 +370,15 @@ export function Header() {
           {showSearch && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ 
-                height: "auto", 
+              animate={{
+                height: "auto",
                 opacity: 1,
-                transition: { duration: 0.3, ease: "easeOut" }
+                transition: { duration: 0.3, ease: "easeOut" },
               }}
-              exit={{ 
-                height: 0, 
+              exit={{
+                height: 0,
                 opacity: 0,
-                transition: { duration: 0.2, ease: "easeIn" }
+                transition: { duration: 0.2, ease: "easeIn" },
               }}
               className="overflow-hidden"
             >
@@ -349,6 +397,5 @@ export function Header() {
         </AnimatePresence>
       </div>
     </motion.header>
-  )
+  );
 }
-

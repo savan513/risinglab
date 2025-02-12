@@ -7,14 +7,14 @@ const contactItems = [
   {
     icon: Mail,
     title: "Email",
-    value: "info@theriseofdiamonds.com",
+    value: "info@risinglab.com",
     color: "text-blue-500",
     delay: 0.2,
   },
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 97248 20911",
+    value: "+91 77777 88888",
     color: "text-green-500",
     delay: 0.3,
   },

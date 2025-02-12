@@ -7,7 +7,7 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "Bride",
     content:
-      "The engagement ring I purchased from Jenny Diamonds exceeded all my expectations. The quality and craftsmanship are exceptional.",
+      "The engagement ring I purchased from Rising Lab Diamonds exceeded all my expectations. The quality and craftsmanship are exceptional.",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const testimonials = [
     name: "Emma Williams",
     role: "Customer",
     content:
-      "The attention to detail and personalized service sets Jenny Diamonds apart. I couldn't be happier with my jewelry.",
+      "The attention to detail and personalized service sets Rising Lab Diamonds apart. I couldn't be happier with my jewelry.",
   },
 ]
 

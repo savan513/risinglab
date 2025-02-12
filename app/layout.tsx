@@ -18,9 +18,9 @@ const playfair = Playfair_Display({
 })
 
 export const metadata = {
-  title: "Jenny Diamonds | Luxury Jewelry Store",
+  title: "RISING LAB | LAB GROWN DIAMONDS",
   description:
-    "Discover exceptional diamonds and fine jewelry at Jenny Diamonds. Crafting timeless elegance since 1990.",
+    "Discover exceptional diamonds and fine jewelry at RISING LAB. Crafting timeless elegance since 1990.",
 }
 
 export default function RootLayout({

@@ -22,7 +22,7 @@ export const fetchDiamondCategory = createAsyncThunk<any, any>(
   "diamond/fetchDiamondCategory",
   async (filter: any, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${process.env.REACT_FRONT_URL}/api/apps/category`, {
+      const response = await axios.get(`https://rising-admin.vercel.app/api/apps/category`, {
         params: {
           filter: JSON.stringify(filter)
         }
@@ -39,7 +39,7 @@ export const fetchDiamondsCollection = createAsyncThunk<any, void>(
   async (_, { rejectWithValue }) => {
     try {
     //   const response = await axios.get(`${process.env.HOST}/api/apps/diamond`, {
-      const response = await axios.get(`${process.env.REACT_FRONT_URL}/api/apps/diamond`);
+      const response = await axios.get(`https://rising-admin.vercel.app/api/apps/diamond`);
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || error.message);
@@ -51,7 +51,7 @@ export const fetchDiamondsByCategory = createAsyncThunk(
   'diamond/fetchByCategory',
   async (slug: any) => {
     console.log("slug api:==> ", slug);
-    const response = await axios.get(`${process.env.REACT_FRONT_URL}/api/apps/diamond/category/${slug}`)
+    const response = await axios.get(`https://rising-admin.vercel.app/api/apps/diamond/category/${slug}`)
     return response.data
   }
 )

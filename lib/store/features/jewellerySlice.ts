@@ -23,7 +23,7 @@ export const fetchJewelleryCategory = createAsyncThunk<any, any>(
   async (filter: any, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_FRONT_URL}/api/apps/category`,
+        `https://rising-admin.vercel.app/api/apps/category`,
         {
           params: {
             filter: JSON.stringify(filter),
@@ -43,7 +43,7 @@ export const fetchJewelleryCollection = createAsyncThunk<any, void>(
     try {
       //   const response = await axios.get(`${process.env.HOST}/api/apps/diamond`, {
       const response = await axios.get(
-        `${process.env.REACT_FRONT_URL}/api/apps/jewellery`
+        `https://rising-admin.vercel.app/api/apps/jewellery`
       );
       return response.data;
     } catch (error: any) {
@@ -56,7 +56,7 @@ export const fetchJewelleryByCategory = createAsyncThunk(
   "jewellery/fetchJewelleryByCategory",
   async (slug: any) => {
     const response = await axios.get(
-      `${process.env.REACT_FRONT_URL}/api/apps/jewellery/category/${slug}`
+      `https://rising-admin.vercel.app/api/apps/jewellery/category/${slug}`
     );
     return response.data;
   }

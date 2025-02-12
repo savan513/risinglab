@@ -53,7 +53,7 @@ export function SiteHeader() {
             </Button>
           </nav>
           <div className="hidden lg:block">
-            <h2 className="font-playfair text-xl">Jenny Diamonds</h2>
+            <h2 className="font-playfair text-xl">RISING LAB DIAMONDS</h2>
           </div>
         </div>
       </div>

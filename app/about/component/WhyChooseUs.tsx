@@ -30,7 +30,7 @@ export function WhyChooseUs() {
   return (
     <section className="py-16 bg-white dark:bg-gray-800">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-playfair text-center mb-12">Why Choose Jenny Diamonds?</h2>
+        <h2 className="text-3xl md:text-4xl font-playfair text-center mb-12">Why Choose RISING LAB Diamonds?</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {reasons.map((reason, index) => (
             <motion.div

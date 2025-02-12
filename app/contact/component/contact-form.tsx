@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { useDispatch } from "react-redux"
+import { contactUsapi } from "@/lib/store/features/contactUsSlice"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -22,9 +24,11 @@ const formSchema = z.object({
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
+  subject: z.string().optional().default("inquiry of customer"),
 })
 
 export function ContactForm() {
+  const dispatch = useDispatch();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,11 +36,13 @@ export function ContactForm() {
       email: "",
       phone: "",
       message: "",
+      subject: "inquiry of customer",
     },
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
+    dispatch(contactUsapi({data : values})  as any)
   }
 
   return (
