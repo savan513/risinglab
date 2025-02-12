@@ -9,6 +9,7 @@ import "./globals.css"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
+import { Header } from "@/components/Header"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const playfair = Playfair_Display({
@@ -32,8 +33,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${playfair.variable} min-h-screen flex flex-col`}>
         <Providers>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Navbar />
-            <main className="flex-1">{children}</main>
+            <Header />
+            {/* <Navbar /> */}
+            <main className="flex-1 mt-">{children}</main>
             <Footer />
           </ThemeProvider>
         </Providers>

@@ -6,23 +6,23 @@ import { Award, Gem, UserCheck, Zap } from "lucide-react"
 const reasons = [
   {
     icon: Gem,
-    title: "Exceptional Quality",
-    description: "We offer only the finest, hand-selected diamonds and gemstones.",
+    title: "Sustainable Choice",
+    description: "Eco-friendly diamonds created with minimal environmental impact.",
   },
   {
     icon: UserCheck,
-    title: "Expert Craftsmanship",
-    description: "Our master jewelers bring decades of experience to every piece.",
+    title: "Advanced Technology",
+    description: "State-of-the-art facilities creating perfect diamonds.",
   },
   {
     icon: Award,
-    title: "Ethical Sourcing",
-    description: "We ensure all our materials are responsibly and ethically sourced.",
+    title: "Ethical Production",
+    description: "100% conflict-free, environmentally conscious creation process.",
   },
   {
     icon: Zap,
-    title: "Personalized Service",
-    description: "Experience tailored assistance from our knowledgeable team.",
+    title: "Superior Value",
+    description: "Premium quality diamonds at better value than mined stones.",
   },
 ]
 

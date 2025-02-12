@@ -5,34 +5,35 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Heart, MessageSquare, Instagram } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { diamondsInstagram1, diamondsInstagram2, diamondsInstagram4, diamondsInstagram5 } from "@/public/assets/img"
 
 const instagramPosts = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=800&q=80",
-    likes: 12,
-    comments: 0,
+    likes: 1982,
+    comments: 232,
     link: "https://instagram.com/jennydiamonds",
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80",
-    likes: 15,
-    comments: 3,
+    image: diamondsInstagram1,
+    likes: 185,
+    comments: 23,
     link: "https://instagram.com/jennydiamonds",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
-    likes: 24,
-    comments: 2,
+    image: diamondsInstagram4,
+    likes: 294,
+    comments: 56,
     link: "https://instagram.com/jennydiamonds",
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80",
-    likes: 18,
-    comments: 1,
+    image: diamondsInstagram5,
+    likes: 118,
+    comments: 64,
     link: "https://instagram.com/jennydiamonds",
   },
 ]
@@ -42,7 +43,7 @@ export function InstagramFeed() {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-6 mb-12">
-          <span className="text-gold font-serif italic text-xl">Our Instagram Collection</span>
+          <span className="text-gold font-serif italic text-lg md:text-xl">Our Instagram Collection</span>
           <h2 className="text-3xl md:text-4xl font-serif">SHOP ON INSTAGRAM</h2>
           <p className="text-muted-foreground max-w-3xl mx-auto">
             Explore our latest designs and stunning diamonds on Instagram. Follow us for inspiration and discover your
@@ -73,11 +74,11 @@ export function InstagramFeed() {
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="flex items-center space-x-4 text-white">
-                    <div className="flex items-center">
+                    <div className="flex items-center text-gold">
                       <Heart className="w-6 h-6 mr-2" />
                       <span>{post.likes}</span>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center text-gold font-bold" >
                       <MessageSquare className="w-6 h-6 mr-2" />
                       <span>{post.comments}</span>
                     </div>
@@ -87,7 +88,7 @@ export function InstagramFeed() {
             </motion.div>
           ))}
         </div>
-        
+
         {/* Follow Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

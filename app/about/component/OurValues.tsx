@@ -6,23 +6,23 @@ import { Diamond, Heart, Shield, Star } from "lucide-react"
 const values = [
   {
     icon: Diamond,
-    title: "Quality",
-    description: "We source only the finest diamonds and materials for our jewelry.",
+    title: "Sustainability",
+    description: "We create beautiful diamonds while minimizing environmental impact.",
   },
   {
     icon: Heart,
-    title: "Passion",
-    description: "Our love for craftsmanship shines through in every piece we create.",
+    title: "Innovation",
+    description: "We leverage cutting-edge technology to create perfect lab-grown diamonds.",
   },
   {
     icon: Shield,
-    title: "Integrity",
-    description: "We uphold the highest ethical standards in all our business practices.",
+    title: "Transparency",
+    description: "We maintain complete transparency in our diamond creation process.",
   },
   {
     icon: Star,
-    title: "Innovation",
-    description: "We continuously evolve our designs and techniques to stay at the forefront of jewelry making.",
+    title: "Quality",
+    description: "Our lab-grown diamonds meet the highest standards of excellence.",
   },
 ]
 

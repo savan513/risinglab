@@ -1,40 +1,42 @@
 "use client"
 
+import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Diamond } from "lucide-react"
+import { Diamond, Gem } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { diamonds1, diamonds2, diamonds3, diamonds4, diamonds5, diamonds6, diamonds8 } from "@/public/assets/img"
 
 const diamondCuts = [
   {
-    title: "Round Cut Diamonds",
-    description: "Classic brilliance, known for their exceptional sparkle.",
+    title: "Lab Grown Brilliance",
+    description: "Ethically created diamonds with exceptional sparkle and clarity.",
   },
   {
-    title: "Princess Cut Diamonds",
-    description: "A modern, angular cut that exudes sophistication.",
+    title: "Sustainable Luxury",
+    description: "Eco-friendly diamonds with minimal environmental impact.",
   },
   {
-    title: "Emerald Cut Diamonds",
-    description: "Elegant with a vintage appeal, featuring a step-cut design.",
+    title: "Advanced Technology",
+    description: "State-of-the-art processes creating flawless diamonds.",
   },
   {
-    title: "Cushion Cut Diamonds",
-    description: "Soft, rounded edges with a romantic and timeless style.",
+    title: "Ethical Creation",
+    description: "Conflict-free diamonds crafted with sustainable practices.",
   },
   {
-    title: "Oval Cut Diamonds",
-    description: "A twist on tradition, offering brilliance in an elongated shape.",
+    title: "Premium Quality",
+    description: "Laboratory precision ensuring superior diamond quality.",
   },
   {
-    title: "Pear Cut Diamonds",
-    description: "Unique and striking, blending round and marquise cuts.",
+    title: "Future of Diamonds",
+    description: "Innovative approach to creating timeless beauty.",
   },
 ]
 
 export function CallToAction() {
   return (
-    <section className="py-20 bg-gray-50/50 dark:bg-gray-950/50">
+    <section className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -44,6 +46,7 @@ export function CallToAction() {
             className="space-y-8"
           >
             <div className="space-y-6 max-w-2xl">
+              <span className="text-gold font-serif text-lg md:text-xl">The Rise of Lab Grown Diamond</span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
                 Unveil the
                 <br />
@@ -52,9 +55,10 @@ export function CallToAction() {
                 Diamonds
               </h2>
               <p className="text-muted-foreground text-lg">
-                At Jenny Diamonds, we take pride in offering an extraordinary collection of diamonds, each carefully
-                selected for its brilliance, clarity, and ethical sourcing. Whether you&apos;re marking a special
-                occasion or searching for a timeless piece, our diamonds are crafted to reflect elegance and perfection.
+                Experience the future of luxury with our lab-grown diamonds. We combine cutting-edge technology
+                with sustainable practices to create stunning diamonds that are ethically sourced and
+                environmentally conscious. Our commitment to innovation brings you the same brilliance and
+                quality as natural diamonds, with a positive impact on our planet.
               </p>
             </div>
 
@@ -68,7 +72,7 @@ export function CallToAction() {
                   transition={{ delay: index * 0.1 }}
                   className="flex items-start gap-3"
                 >
-                  <Diamond className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                  <Gem className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-medium text-foreground">{cut.title}</h3>
                     <p className="text-muted-foreground">{cut.description}</p>
@@ -78,19 +82,21 @@ export function CallToAction() {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button
-                size="lg"
-                className="bg-gold hover:bg-gold/90 text-white dark:bg-white dark:text-black dark:hover:bg-white/90"
-              >
-                GO TO SHOP
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-gold text-black hover:bg-gold hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black"
-              >
-                READ MORE
-              </Button>
+              <Link href="/diamonds" className="w-full sm:w-auto">
+                <Button size="lg" className="bg-gold hover:bg-gold/90 text-black w-full sm:w-auto text-sm sm:text-base">
+                  GO TO SHOP
+                </Button>
+              </Link>
+              <Link href="/about" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gold text-black hover:bg-gold hover:text-black dark:text-white
+                  w-full sm:w-auto text-sm sm:text-base"
+                >
+                  LEARN MORE
+                </Button>
+              </Link>
             </div>
           </motion.div>
 
@@ -100,46 +106,108 @@ export function CallToAction() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="grid grid-cols-2 gap-8 relative">
-              {/* Decorative line connecting images */}
-              <div className="absolute inset-0 z-0">
-                <svg className="w-full h-full" viewBox="0 0 400 400">
+            {/* Decorative line connecting images */}
+            {/* <div className="absolute inset-0 z-0 pointer-events-none">
+              <svg className="w-full h-full" viewBox="0 0 400 400">
+                <path
+                  d="M 50,50 L 350,50 L 350,350 L 50,350 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="text-gold/90"
+                />
+              </svg>
+            </div> */}
+
+            {/* Honeycomb decorative line */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
+              <defs>
+                <pattern id="honeycomb" x="0" y="0" width="50" height="86.6" patternUnits="userSpaceOnUse">
                   <path
-                    d="M 100,100 L 300,100 L 300,300 L 100,300 Z"
+                    d="M25,0 L50,14.43 L50,43.3 L25,57.73 L0,43.3 L0,14.43 Z M25,86.6 L50,72.17 L50,43.3 M25,86.6 L0,72.17 L0,43.3"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
-                    className="text-gold/30"
+                    strokeWidth="1"
+                    className="text-gold/80"
                   />
-                </svg>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#honeycomb)" />
+            </svg>
+
+            {/* Diamond Images */}
+            <div className="grid grid-cols-3 gap-4 relative">
+              <div className="relative aspect-square rounded-lg overflow-hidden col-span-2 row-span-2">
+                <Image
+                  src={diamonds1}
+                  alt="Premium diamond collection"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                />
               </div>
 
-              {/* Diamond Images */}
-              <div className="relative aspect-square rounded-lg overflow-hidden">
+              <div className="relative aspect-square rounded-lg overflow-hidden"
+              // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+              >
                 <Image
-                  src="https://images.unsplash.com/photo-1600267185393-e158a98703de?auto=format&fit=crop&w=600&q=80"
-                  alt="Pink diamonds cluster"
+                  src={diamonds8}
+                  alt="Diamond craftsmanship"
                   fill
-                  className="object-cover"
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div className="relative aspect-square rounded-lg overflow-hidden mt-12">
+
+              <div className="relative aspect-square rounded-lg overflow-hidden"
+              // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+              >
                 <Image
-                  src="https://images.unsplash.com/photo-1615655406736-b37c4fabf923?auto=format&fit=crop&w=600&q=80"
-                  alt="Emerald cut diamond"
+                  src={diamonds3}
+                  alt="Diamond elegance"
                   fill
-                  className="object-cover"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div className="relative aspect-square rounded-lg overflow-hidden col-span-2 mt-8">
+
+
+
+              <div className="relative aspect-square rounded-lg overflow-hidden"
+              // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+              >
                 <Image
-                  src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80"
-                  alt="Diamond sparkle"
+                  src={diamonds4}
+                  alt="Diamond brilliance"
                   fill
-                  className="object-cover"
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              <div className="relative aspect-square rounded-lg overflow-hidden"
+              // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+              >
+                <Image
+                  src={diamonds5}
+                  alt="Diamond luxury"
+                  fill
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative aspect-square rounded-lg overflow-hidden"
+              // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+              >
+                <Image
+                  src={diamonds6}
+                  alt="Diamond luxury"
+                  fill
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
+
+
           </motion.div>
         </div>
       </div>

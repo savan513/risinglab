@@ -1,41 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 interface WishlistItem {
-  id: string;
-  // Add other product properties as needed
+  id: string
+  title: string
+  price: number
+  image: string
+  categories: string[]
+  hot?: boolean
 }
 
-export const useWishlist = () => {
-  const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
+export function useWishlist() {
+  const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([])
 
   useEffect(() => {
-    // Load wishlist from localStorage on component mount
-    const savedWishlist = localStorage.getItem('wishlist');
-    if (savedWishlist) {
-      setWishlist(JSON.parse(savedWishlist));
-    }
-  }, []);
+    const stored = localStorage.getItem('wishlist')
+    if (stored) setWishlistItems(JSON.parse(stored))
+  }, [])
 
   const addToWishlist = (item: WishlistItem) => {
-    const updatedWishlist = [...wishlist, item];
-    setWishlist(updatedWishlist);
-    localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-  };
+    const newItems = [...wishlistItems, item]
+    setWishlistItems(newItems)
+    localStorage.setItem('wishlist', JSON.stringify(newItems))
+  }
 
-  const removeFromWishlist = (itemId: string) => {
-    const updatedWishlist = wishlist.filter((item) => item.id !== itemId);
-    setWishlist(updatedWishlist);
-    localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-  };
+  const removeFromWishlist = (id: string) => {
+    const newItems = wishlistItems.filter(item => item.id !== id)
+    setWishlistItems(newItems)
+    localStorage.setItem('wishlist', JSON.stringify(newItems))
+  }
 
-  const isInWishlist = (itemId: string) => {
-    return wishlist.some((item) => item.id === itemId);
-  };
-
-  return {
-    wishlist,
-    addToWishlist,
-    removeFromWishlist,
-    isInWishlist,
-  };
-};
+  return { wishlistItems, addToWishlist, removeFromWishlist }
+} 
