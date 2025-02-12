@@ -95,7 +95,7 @@ export function FeaturedProducts() {
                         className={`h-4 w-4 ${isInWishlist(product.id) ? "fill-gold text-gold" : ""}`} 
                       />
                     </Button>
-                    <Link href={`/product/${product.id}`}>
+                    <Link href={``}>
                       <Button size="icon" variant="secondary" className="h-8 w-8">
                         <Search className="h-4 w-4" />
                       </Button>

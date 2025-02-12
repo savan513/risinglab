@@ -70,15 +70,15 @@ export function JewelleryCollections() {
     loading: state?.jewellery?.loading,
   }))
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center space-y-6 max-w-3xl mx-auto mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-gold font-serif italic block mb-4"
+            className="text-gold font-serif italic text-xl"
           >
             Crafted Elegance for Every Occasion
           </motion.span>
@@ -88,7 +88,7 @@ export function JewelleryCollections() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl font-serif text-gray-900 mb-6"
+            className="text-3xl md:text-4xl font-serif"
           >
             Explore Our Jewellery Collections
           </motion.h2>
@@ -98,7 +98,7 @@ export function JewelleryCollections() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-gray-600"
+            className="text-muted-foreground max-w-3xl mx-auto"
           >
             Browse our stunning range of fine jewellery, thoughtfully categorized for your convenience. Whether
             you&apos;re seeking timeless classics or contemporary designs, our rings, necklaces, bracelets, and earrings

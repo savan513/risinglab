@@ -71,15 +71,15 @@ export function DiamondCollections() {
   }))
 
   return (
-    <section className="py-20 bg-gray-50/50 dark:bg-gray-950/50">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center space-y-6  max-w-3xl mx-auto mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-gold font-serif italic block mb-4"
+            className="text-gold font-serif italic text-xl"
           >
             Cut, Clarity, and Brilliance for Every Style
           </motion.span>
@@ -89,9 +89,9 @@ export function DiamondCollections() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl font-serif text-black mb-6"
+            className="text-3xl md:text-4xl font-serif"
           >
-            Explore Our Diamond Collections
+            EXPLORE OUR DIAMOND COLLECTIONS
           </motion.h2>
 
           <motion.p
@@ -99,7 +99,7 @@ export function DiamondCollections() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-black/80"
+            className="text-muted-foreground max-w-3xl mx-auto"
           >
             Discover a world of dazzling diamonds, expertly categorized to help you find your perfect match. From
             timeless round cuts to modern princess designs, explore a variety of shapes, sizes, and styles, all crafted
