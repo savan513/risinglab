@@ -8,8 +8,11 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { contactUsapi } from "@/lib/store/features/contactUsSlice"
+import { RootState } from "@/lib/store/store"
+import { Loader2 } from "lucide-react"
+import { toast } from "sonner"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -29,6 +32,13 @@ const formSchema = z.object({
 
 export function ContactForm() {
   const dispatch = useDispatch();
+  
+  const { loading, contactUsapiData, error } = useSelector((state: RootState) => ({
+    loading: state.contactUs.loading,
+    contactUsapiData: state.contactUs.contactUsapiData,
+    error: state.contactUs.error
+  }));
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,9 +50,21 @@ export function ContactForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    dispatch(contactUsapi({data : values})  as any)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const result = await dispatch(contactUsapi({ values }) as any).unwrap();
+      
+      if (result) {
+        toast.success("Your message has been sent successfully.", {
+          description: "We'll get back to you soon!",
+        });
+        form.reset();
+      }
+    } catch (error: any) {
+      toast.error("Something went wrong!", {
+        description: error.message || "Please try again later.",
+      });
+    }
   }
 
   return (
@@ -62,6 +84,7 @@ export function ContactForm() {
                       placeholder="Your name" 
                       {...field} 
                       className="bg-background border-border/50 focus:border-gold"
+                      disabled={loading}
                     />
                   </FormControl>
                   <FormMessage />
@@ -79,6 +102,7 @@ export function ContactForm() {
                       placeholder="your@email.com" 
                       {...field} 
                       className="bg-background border-border/50 focus:border-gold"
+                      disabled={loading}
                     />
                   </FormControl>
                   <FormMessage />
@@ -96,6 +120,7 @@ export function ContactForm() {
                       placeholder="Your phone number" 
                       {...field} 
                       className="bg-background border-border/50 focus:border-gold"
+                      disabled={loading}
                     />
                   </FormControl>
                   <FormMessage />
@@ -113,6 +138,7 @@ export function ContactForm() {
                       placeholder="Your message" 
                       {...field} 
                       className="bg-background border-border/50 focus:border-gold"
+                      disabled={loading}
                     />
                   </FormControl>
                   <FormMessage />
@@ -122,8 +148,16 @@ export function ContactForm() {
             <Button 
               type="submit" 
               className="w-full bg-gold hover:bg-gold/90 text-black"
+              disabled={loading}
             >
-              Send Message
+              {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                'Send Message'
+              )}
             </Button>
           </div>
         </div>

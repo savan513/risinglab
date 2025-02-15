@@ -1,19 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState: any = {
-    contactUsapiData: [],
-    loading: false,
-    error: null,
-  };
+interface ContactState {
+  contactUsapiData: any;
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: ContactState = {
+  contactUsapiData: null,
+  loading: false,
+  error: null,
+};
 
 export const contactUsapi = createAsyncThunk<any, any>(
   "contact/contactUsapi",
-  async (data: any, { rejectWithValue }) => {
+  async ({ values }: { values: any }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
         `https://rising-admin.vercel.app/api/apps/contact`,
-        data
+        values
       );
       return response.data;
     } catch (error: any) {
@@ -30,13 +36,16 @@ export const contactUs = createSlice({
     builder
       .addCase(contactUsapi.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(contactUsapi.fulfilled, (state, action) => {
         state.loading = false;
         state.contactUsapiData = action.payload;
+        state.error = null;
       })
-      .addCase(contactUsapi.rejected, (state) => {
+      .addCase(contactUsapi.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.payload as string || 'Something went wrong';
       });
   },
 });
