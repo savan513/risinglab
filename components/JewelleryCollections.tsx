@@ -9,50 +9,6 @@ import { useEffect } from "react"
 import { RootState } from "@/lib/store/store"
 import { fetchJewelleryCategory } from "@/lib/store/features/jewellerySlice"
 
-const collections = [
-  {
-    id: 1,
-    title: "WATCH",
-    image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
-    href: "/jewellery/watch",
-    description: "Timeless elegance on your wrist",
-  },
-  {
-    id: 2,
-    title: "RINGS",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e",
-    href: "/jewellery/rings",
-    description: "Symbols of eternal love",
-  },
-  {
-    id: 3,
-    title: "PENDANT",
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f",
-    href: "/jewellery/pendant",
-    description: "Statement pieces that inspire",
-  },
-  {
-    id: 4,
-    title: "NECKLACE",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338",
-    href: "/jewellery/necklace",
-    description: "Graceful chains of beauty",
-  },
-  {
-    id: 5,
-    title: "EARRINGS",
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908",
-    href: "/jewellery/earrings",
-    description: "Frame your face with sparkle",
-  },
-  {
-    id: 6,
-    title: "BRACELET",
-    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a",
-    href: "/jewellery/bracelet",
-    description: "Elegant wrist embellishments",
-  },
-]
 
 export function JewelleryCollections() {
   // dispatch hook

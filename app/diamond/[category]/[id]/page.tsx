@@ -9,6 +9,7 @@ import { useSelector } from "react-redux"
 import { RootState } from "@/lib/store/store"
 import { useEffect, useMemo } from "react"
 import { useRouter } from "next/navigation"
+import { socialLinks } from "@/components/Footer"
 
 interface DiamondDetailProps {
   params: {
@@ -70,32 +71,6 @@ export default function DiamondDetail({ params }: DiamondDetailProps) {
     }
   }, [fetchDiamondsByCategoryData, params.category, router])
 
-  const socialLinks = [
-    {
-      icon: Instagram,
-      href: "https://www.instagram.com/yourusername",
-      label: "Instagram",
-      color: "text-pink-500"
-    },
-    {
-      icon: Facebook,
-      href: "https://www.facebook.com/yourusername",
-      label: "Facebook",
-      color: "text-blue-600"
-    },
-    {
-      icon: Youtube,
-      href: "https://www.youtube.com/@yourchannel",
-      label: "YouTube",
-      color: "text-red-500"
-    },
-    {
-      icon: Twitter,
-      href: "https://www.Twitter.com/@yourchannel",
-      label: "Twitter",
-      color: "text-blue-500"
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">

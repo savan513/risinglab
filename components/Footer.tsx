@@ -10,6 +10,7 @@ import {
   Phone,
   Mail,
   Gem,
+  Twitter,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSelector } from "react-redux";
@@ -40,24 +41,31 @@ const quickLinks = [
   { href: "/blog", label: "Blog" },
 ];
 
-const socialLinks = [
+
+export const socialLinks = [
   {
     icon: Instagram,
     href: "https://www.instagram.com/yourusername",
     label: "Instagram",
-    color: "text-pink-500 hover:text-pink-600",
+    color: "text-pink-500"
   },
   {
     icon: Facebook,
     href: "https://www.facebook.com/yourusername",
     label: "Facebook",
-    color: "text-blue-600 hover:text-blue-700",
+    color: "text-blue-600"
   },
   {
     icon: Youtube,
     href: "https://www.youtube.com/@yourchannel",
     label: "YouTube",
-    color: "text-red-500 hover:text-red-600",
+    color: "text-red-500"
+  },
+  {
+    icon: Twitter,
+    href: "https://www.Twitter.com/@yourchannel",
+    label: "Twitter",
+    color: "text-blue-500"
   },
 ];
 

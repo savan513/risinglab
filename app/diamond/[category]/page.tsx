@@ -33,28 +33,7 @@ interface DiamondListingProps {
     id: string;
   };
 }
-const diamonds = [
-  {
-    id: "1",
-    title: "Diamonds",
-    image: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923",
-    categories: ["Diamonds", "Natural Diamonds"],
-    hot: true,
-  },
-  {
-    id: "2",
-    title: "Lab Grown Diamond 1 mm 2.5m Round Loose Lab Diamond Brilliant Cut",
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f",
-    categories: ["Lab Grown Diamonds", "Loose Diamonds"],
-  },
-  {
-    id: "3",
-    title: "Round Brilliant Loose Top Quality Lab Grown Diamond",
-    image: "https://images.unsplash.com/photo-1603255466024-2c0802ad6218",
-    categories: ["Lab Grown Diamonds", "Loose Diamonds"],
-  },
-  // Add more diamonds...
-];
+
 export default function DiamondListing({ params }: DiamondListingProps) {
   const { addToWishlist, removeFromWishlist, wishlistItems } = useWishlist();
 
