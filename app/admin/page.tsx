@@ -8,8 +8,8 @@ const AdminRedirect = () => {
 
   useEffect(() => {
     // Redirect to your admin website URL
-    // router.push('https://rising-admin.vercel.app/')
-    router.push(`${process.env.REACT_FRONT_URL}`)
+    router.push('https://rising-admin.vercel.app/')
+    // router.push(`${process.env.REACT_FRONT_URL}`)
   }, [router])
 
   return null // Or you can show a loading spinner here if you want
