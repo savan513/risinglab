@@ -70,6 +70,11 @@ export function DiamondCollections() {
     loading: state?.diamond?.loading,
   }))
 
+  // selected items
+  const selectedItems = fetchDiamondCategoryData?.length > 10 
+    ? fetchDiamondCategoryData?.sort(() => 0.5 - Math.random()).slice(0, 6)  // If length > 10, pick 6 random fetchDiamondCategoryData?
+    : fetchDiamondCategoryData?.slice(0, Math.min(6, fetchDiamondCategoryData?.length));  // Else, take all available items (up to 6)
+
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -134,7 +139,7 @@ export function DiamondCollections() {
                 </div>
               </motion.div>
             ))
-            : fetchDiamondCategoryData.map((collection, index) => (
+            : selectedItems?.map((collection, index) => (
               <motion.div
                 key={collection._id}
                 initial={{ opacity: 0, y: 20 }}

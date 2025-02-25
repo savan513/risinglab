@@ -10,7 +10,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { motion } from "framer-motion"
-import { MessageCircle, ChevronLeft, ChevronRight, ZoomIn, X } from "lucide-react"
+import { MessageCircle, ChevronLeft, ChevronRight, ZoomIn, X, ChevronUp, ChevronDown } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 
@@ -42,8 +42,15 @@ export function ProductModal({
   const [selectedImage, setSelectedImage] = useState(0)
   const [isZoomed, setIsZoomed] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 })
+  const [isExpanded, setIsExpanded] = useState(false)
 
   if (!product) return null
+
+  const images = Array.isArray(product.images)
+    ? product.images
+    : product.image
+      ? [product.image]
+      : ["/placeholder.svg"]
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isZoomed) return
@@ -55,13 +62,13 @@ export function ProductModal({
 
   const nextImage = () => {
     setSelectedImage((prev) =>
-      prev === (product.images.length - 1) ? 0 : prev + 1
+      prev === (images.length - 1) ? 0 : prev + 1
     )
   }
 
   const prevImage = () => {
     setSelectedImage((prev) =>
-      prev === 0 ? product.images.length - 1 : prev - 1
+      prev === 0 ? images.length - 1 : prev - 1
     )
   }
 
@@ -70,12 +77,13 @@ export function ProductModal({
       <DialogContent className="max-w-[95vw] lg:max-w-5xl p-0 overflow-hidden bg-background h-[90vh] lg:h-auto border-gold/20">
         {/* Close button */}
         <motion.button
-          className="absolute right-4 top-4 z-50 p-2 rounded-full bg-background/80 backdrop-blur-sm hover:bg-gold/10 transition-colors border border-gold/20"
+          className="absolute right-4 top-4 z-50 p-2 rounded-full bg-background/80 backdrop-blur-sm 
+            hover:bg-gold/10 transition-colors border border-gold/20 group/close"
           onClick={onClose}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          <X className="h-4 w-4 text-gold" />
+          <X className="h-4 w-4 text-gold transition-transform duration-300 group-hover/close:rotate-180" />
         </motion.button>
 
         <div className="grid lg:grid-cols-2 h-full lg:h-auto overflow-y-auto">
@@ -89,8 +97,8 @@ export function ProductModal({
               whileHover={{ scale: isZoomed ? 1 : 1.02 }}
             >
               <Image
-                src={product.images[selectedImage] || "/placeholder.svg"}
-                alt={product.jewelleryName || ""}
+                src={images[selectedImage]}
+                alt={product.jewelleryName || product.title || "Product image"}
                 fill
                 className={cn(
                   "object-cover transition-all duration-300",
@@ -151,7 +159,7 @@ export function ProductModal({
 
             {/* Thumbnail Navigation */}
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gold/20 scrollbar-track-transparent">
-              {product.images.map((image: string, index: number) => (
+              {images.map((image: string, index: number) => (
                 <motion.button
                   key={index}
                   className={cn(
@@ -166,7 +174,7 @@ export function ProductModal({
                 >
                   <Image
                     src={image}
-                    alt={`${product.jewelleryName} ${index + 1}`}
+                    alt={`${product.jewelleryName || product.title || "Product"} ${index + 1}`}
                     fill
                     className="object-cover"
                   />
@@ -186,16 +194,47 @@ export function ProductModal({
               </div>
             </DialogHeader>
 
-            <div className="space-y-4 lg:space-y-6">
-              <div className="text-xl lg:text-2xl font-bold text-gold">
-                ₹{product.price?.toLocaleString()}
+            <div className="space-y-4 lg:space-y-4">
+              {
+                product.price && (
+                  <div className="text-xl lg:text-2xl font-bold text-green-500 dark:text-green-400 
+                transition-colors duration-300 group-hover:text-green-600 dark:group-hover:text-green-500 -mb-2">
+                    ₹{product.price?.toLocaleString()}
+                  </div>
+                )
+              }
+
+              <div className="space-y-1">
+                <div
+                  className={cn(
+                    "prose prose-sm dark:prose-invert overflow-hidden transition-all duration-300 py-4",
+                    !isExpanded ?
+                      "max-h-[200px]" :
+                      "max-h-[350px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gold/10 hover:scrollbar-thumb-gold/20"
+                  )}
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                />
+
+                {product.description?.length > 100 && (
+                  <div className="flex justify-center">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-xs font-medium w-full border-gold/20 hover:bg-gold/10 hover:border-gold text-gold px-4 h-7 transition-all duration-300 group flex items-center gap-1"
+                      onClick={() => setIsExpanded(!isExpanded)}
+                    >
+                      <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
+                      {isExpanded ? (
+                        <ChevronUp className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform" />
+                      ) : (
+                        <ChevronDown className="w-3 h-3 group-hover:translate-y-0.5 transition-transform" />
+                      )}
+                    </Button>
+                  </div>
+                )}
               </div>
 
-              <div className="prose prose-sm dark:prose-invert max-h-[150px] lg:max-h-none overflow-y-auto">
-                <p>{product.description}</p>
-              </div>
-
-              <div className="space-y-3 border-t border-gold/20 pt-4">
+              <div className="space-y-3 border-t border-gold/20 pt-4 mt-2">
                 {[
                   { label: "SKU", value: product.sku },
                   { label: "Brand", value: product.brand },
@@ -203,7 +242,7 @@ export function ProductModal({
                   { label: "Color", value: product.color },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between text-sm">
-                    <span className="text-gold/70">{label}:</span>
+                    <span className="">{label}:</span>
                     <span className="font-medium">{value || "-"}</span>
                   </div>
                 ))}
@@ -219,8 +258,11 @@ export function ProductModal({
                   </svg>
                   INQUIRY NOW
                 </Button>
+                {
+                 categorySlug !== "rings" && (<>
+                 
                 <Link
-                  href={`/jewellery/${categorySlug}/${product._id}`}
+                  href={`/${product.diamondName ? 'diamond' : 'jewellery'}/${categorySlug}/${product._id}`}
                   className="w-full sm:flex-1"
                 >
                   <Button
@@ -230,6 +272,8 @@ export function ProductModal({
                     VIEW DETAILS
                   </Button>
                 </Link>
+                 </>)
+                }
               </div>
             </div>
           </div>

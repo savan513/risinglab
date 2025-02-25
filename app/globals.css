@@ -58,3 +58,13 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  link[rel="icon"] {
+    color: #d4af37;
+  }
+}
+
+.title-gold {
+  color: #d4af37;
+}
+

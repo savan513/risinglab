@@ -3,7 +3,7 @@ import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Providers } from "./Providers"
-import { Toaster } from "sonner"
+import { Metadata } from "next"
 
 import "./globals.css"
 // Import Swiper styles
@@ -18,10 +18,17 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "RISING LAB | LAB GROWN DIAMONDS",
-  description:
-    "Discover exceptional diamonds and fine jewelry at RISING LAB. Crafting timeless elegance since 1990.",
+  description: "The Rise of Lab Grown Diamond Marketplace",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.svg",
+        href: "/favicon.svg",
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
@@ -38,7 +45,6 @@ export default function RootLayout({
             {/* <Navbar /> */}
             <main className="flex-1 mt-">{children}</main>
             <Footer />
-            <Toaster position="top-center" theme="dark" richColors />
           </ThemeProvider>
         </Providers>
       </body>

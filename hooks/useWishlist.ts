@@ -17,10 +17,16 @@ export function useWishlist() {
     if (stored) setWishlistItems(JSON.parse(stored))
   }, [])
 
+  const isInWishlist = (id: string) => {
+    return wishlistItems.some(item => item.id === id)
+  }
+
   const addToWishlist = (item: WishlistItem) => {
-    const newItems = [...wishlistItems, item]
-    setWishlistItems(newItems)
-    localStorage.setItem('wishlist', JSON.stringify(newItems))
+    if (!isInWishlist(item.id)) {
+      const newItems = [...wishlistItems, item]
+      setWishlistItems(newItems)
+      localStorage.setItem('wishlist', JSON.stringify(newItems))
+    }
   }
 
   const removeFromWishlist = (id: string) => {
@@ -29,5 +35,19 @@ export function useWishlist() {
     localStorage.setItem('wishlist', JSON.stringify(newItems))
   }
 
-  return { wishlistItems, addToWishlist, removeFromWishlist }
+  const toggleWishlist = (item: WishlistItem) => {
+    if (isInWishlist(item.id)) {
+      removeFromWishlist(item.id)
+    } else {
+      addToWishlist(item)
+    }
+  }
+
+  return { 
+    wishlistItems, 
+    addToWishlist, 
+    removeFromWishlist, 
+    isInWishlist,
+    toggleWishlist 
+  }
 } 

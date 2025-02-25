@@ -205,7 +205,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-gold/50 text-center">
-          <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+          <p className="text-sm text-muted-foreground flex items-center justify-center gap-1 flex-wrap">
             RISING LAB - LAB Grown Diamonds © {new Date().getFullYear()} | Built
             <span>
               <Gem className="w-4 h-4 text-gold" />{" "}

@@ -25,6 +25,12 @@ export function JewelleryCollections() {
     fetchJewelleryCategoryData: state?.jewellery?.fetchJewelleryCategoryData,
     loading: state?.jewellery?.loading,
   }))
+
+  // selected items
+  const selectedItems = fetchJewelleryCategoryData?.length > 10 
+    ? fetchJewelleryCategoryData?.sort(() => 0.5 - Math.random()).slice(0, 6)  // If length > 10, pick 6 random fetchJewelleryCategoryData?
+    : fetchJewelleryCategoryData?.slice(0, Math.min(6, fetchJewelleryCategoryData?.length));  // Else, take all available items (up to 6)
+
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -63,7 +69,7 @@ export function JewelleryCollections() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {fetchJewelleryCategoryData.map((collection, index) => (
+          {selectedItems?.map((collection, index) => (
             <motion.div
               key={collection.id}
               initial={{ opacity: 0, y: 20 }}
