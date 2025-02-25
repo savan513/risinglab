@@ -7,14 +7,14 @@ const contactItems = [
   {
     icon: Mail,
     title: "Email",
-    value: "info@risinglab.com",
+    value: "risinglab09@gmail.com",
     color: "text-blue-500",
     delay: 0.2,
   },
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 77777 88888",
+    value: "+91 63540 60039",
     color: "text-green-500",
     delay: 0.3,
   },
