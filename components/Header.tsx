@@ -301,7 +301,7 @@ export function Header() {
                     <div className="flex justify-center py-4">
                       <div className="relative w-32 h-32">
                         <Image
-                          src={logoUrl || "/placeholder.svg"}
+                          src={LogoUrl  || "/placeholder.svg"}
                           alt="The Rise of Lab Grown Diamond"
                           fill
                           className="object-contain"
