@@ -314,7 +314,7 @@ export default function DiamondDetail({ params }: DiamondDetailProps) {
             <TabsContent value="additional" className="prose prose-lg max-w-none mt-8">
               <div className="grid grid-cols-2 gap-8 p-6 bg-gray-50 rounded-lg">
                 <div>
-                  <h3 className="text-xl font-semibold mb-4 text-gray-800">Specifications</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">Specifications</h3>
                   <ul className="space-y-3">
                     {[
                       { label: "Category", value: currentDiamond?.category.name },

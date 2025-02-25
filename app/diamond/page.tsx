@@ -332,7 +332,7 @@ export default function DiamondsPage() {
 
 export const handleInquiry = (productId: string) => {
   // Replace with your WhatsApp number and message
-  const phone = "+919999999999";
+  const phone = "+916354060039";
   const message = `I'm interested in diamond product ID: ${productId}`;
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(
     message

@@ -33,6 +33,7 @@ import mainBanner11 from "./main-banner/main-banner-11.webp";
 import mainBanner12 from "./main-banner/main-banner-12.jpg";
 import mainBanner13 from "./main-banner/main-banner-13.webp";
 import mainBanner14 from "./main-banner/main-banner-14.webp";
+import LogoUrl from "./dark-logo.png";
 
 
 
@@ -75,4 +76,5 @@ export {
     mainBanner12,
     mainBanner13,
     mainBanner14,
+    LogoUrl,
 };

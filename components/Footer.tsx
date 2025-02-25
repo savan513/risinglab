@@ -15,6 +15,7 @@ import {
 import { useTheme } from "next-themes";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store/store";
+import { LogoUrl } from "@/public/assets/img";
 
 const diamondLinks = [
   { href: "/certified-diamonds", label: "Certified Diamonds" },
@@ -71,11 +72,10 @@ export const socialLinks = [
 
 export function Footer() {
   const { theme } = useTheme();
-  const logoUrl =
-    theme === "dark"
-      ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-02.jpg-EVZkpBnzJtBfInKjfi8Iqx2JKGnC7y.jpeg"
-      : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-01-XO98e4ali9WrzPwRBNS46yR8PML5pw.png";
-
+  // const logoUrl =
+  //   theme === "dark"
+  //     ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-02.jpg-EVZkpBnzJtBfInKjfi8Iqx2JKGnC7y.jpeg"
+  //     : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-01-XO98e4ali9WrzPwRBNS46yR8PML5pw.png";
   // Useselector
   const { loading, fetchDiamondCategoryData, fetchJewelleryCategoryData } =
     useSelector((state: RootState) => ({
@@ -95,7 +95,7 @@ export function Footer() {
               className="block mb-6 transform hover:scale-105 transition-transform"
             >
               <Image
-                src={logoUrl || "/placeholder.svg"}
+                src={LogoUrl || "/placeholder.svg"}
                 alt="The Rise of Lab Grown Diamond"
                 width={180}
                 height={100}
@@ -189,15 +189,15 @@ export function Footer() {
             </div>
             <div className="flex items-center justify-center lg:justify-start space-x-3 text-sm text-muted-foreground group hover:text-foreground transition-colors">
               <Phone className="h-5 w-5 text-green-500 group-hover:scale-110 transition-transform" />
-              <span>+91 77777 88888</span>
+              <span>+91 63540 60039</span>
             </div>
             <div className="flex items-center justify-center lg:justify-start space-x-3 text-sm text-muted-foreground group hover:text-foreground transition-colors">
               <Mail className="h-5 w-5 text-blue-500 group-hover:scale-110 transition-transform" />
               <a
-                href="mailto:info@risinglab.com"
+                href="mailto:risinglab09@gmail.com"
                 className="hover:underline"
               >
-                info@risinglab.com
+                risinglab09@gmail.com
               </a>
             </div>
           </div>

@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/sheet";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store/store";
+import { LogoUrl } from "@/public/assets/img";
 
 type DropdownItem = {
   label: string;
@@ -52,10 +53,10 @@ export function Header() {
 
   if (!mounted) return null;
 
-  const logoUrl =
-    theme === "dark"
-      ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-02.jpg-97rUotvzZpqyNoTmClxxu8AqWQFv8U.jpeg"
-      : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-01-mKZcU6Fueji9gDFperhAX0SmrKrHlS.png";
+  // const logoUrl =
+  //   theme === "dark"
+  //     ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-02.jpg-97rUotvzZpqyNoTmClxxu8AqWQFv8U.jpeg"
+  //     : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-01-mKZcU6Fueji9gDFperhAX0SmrKrHlS.png";
 
   const handleNavItemClick = () => {
     setIsMenuOpen(false);
@@ -136,7 +137,7 @@ export function Header() {
                 whileHover={{ scale: 1.05 }}
               >
                 <Image
-                  src={logoUrl || "/placeholder.svg"}
+                  src={LogoUrl || "/placeholder.svg"}
                   alt="The Rise of Lab Grown Diamond"
                   fill
                   className="object-contain"
