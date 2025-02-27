@@ -32,6 +32,7 @@ import { mainBanner8 } from "@/public/assets/img";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { useWishlist } from "@/hooks/useWishlist";
+import { fetchDiamondCategory } from "@/lib/store/features/diamondSlice";
 
 export default function JewelleryPage() {
   // dispatch hook
@@ -41,6 +42,8 @@ export default function JewelleryPage() {
   useEffect(() => {
     const filter = { parent: "67a11573f8bba178b89e62c9" };
     dispatch(fetchJewelleryCategory(filter));
+    const filter2 = { parent: "67a11386f8bba178b89e62c4" };
+    dispatch(fetchDiamondCategory(filter2));
   }, []);
 
   // Useselector
@@ -74,7 +77,7 @@ export default function JewelleryPage() {
     if (!searchQuery.trim() || !fetchJewelleryCategoryData) {
       return fetchJewelleryCategoryData;
     }
-    
+
     return fetchJewelleryCategoryData.filter((item: any) =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -200,7 +203,7 @@ export default function JewelleryPage() {
             {/* Left Side - Search and Filters */}
             <div className="flex items-center gap-3 w-full sm:w-auto">
               {isSearchOpen ? (
-                <motion.div 
+                <motion.div
                   initial={{ width: 0, opacity: 0 }}
                   animate={{ width: "100%", opacity: 1 }}
                   className="flex items-center gap-2 w-full sm:w-[300px]"
@@ -241,19 +244,19 @@ export default function JewelleryPage() {
                 </motion.div>
               ) : (
                 <>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     className="flex-1 sm:flex-none"
                     onClick={() => setIsSearchOpen(true)}
                   >
                     <Search className="w-4 h-4 mr-2" />
                     Search
                   </Button>
-                  <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
+                  {/* <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
                     <List className="w-4 h-4 mr-2" />
                     Filters
-                  </Button>
+                  </Button> */}
                 </>
               )}
             </div>
@@ -396,7 +399,7 @@ function ProductCard({ jewellery, loading, index, handleInquiry, isInWishlist, t
                     });
                   }}
                 >
-                  <Heart 
+                  <Heart
                     className={`h-4 w-4 transition-all duration-300
                       ${isInWishlist(jewellery._id)
                         ? "fill-gold text-gold scale-110"
@@ -421,7 +424,10 @@ function ProductCard({ jewellery, loading, index, handleInquiry, isInWishlist, t
                 className="w-full font-medium bg-green-500 hover:bg-green-500/90 text-white 
                       dark:bg-green-600 dark:hover:bg-green-600/90 dark:text-white group/button
                       transition-all duration-300 text-sm"
-                onClick={() => handleInquiry(jewellery.name)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleInquiry(jewellery.name)
+                }}
               >
                 <svg
                   viewBox="0 0 24 24"

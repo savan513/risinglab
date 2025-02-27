@@ -1,3 +1,4 @@
+import { API_HOST } from "@/lib/utils";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -23,7 +24,7 @@ export const fetchJewelleryCategory = createAsyncThunk<any, any>(
   async (filter: any, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `https://rising-admin.vercel.app/api/apps/category`,
+        `${API_HOST}/api/apps/category`,
         {
           params: {
             filter: JSON.stringify(filter),
@@ -43,7 +44,7 @@ export const fetchJewelleryCollection = createAsyncThunk<any, void>(
     try {
       //   const response = await axios.get(`${process.env.HOST}/api/apps/diamond`, {
       const response = await axios.get(
-        `https://rising-admin.vercel.app/api/apps/jewellery`
+        `${API_HOST}/api/apps/jewellery`
       );
       return response.data;
     } catch (error: any) {
@@ -56,7 +57,7 @@ export const fetchJewelleryByCategory = createAsyncThunk(
   "jewellery/fetchJewelleryByCategory",
   async (slug: any) => {
     const response = await axios.get(
-      `https://rising-admin.vercel.app/api/apps/jewellery/category/${slug}`
+      `${API_HOST}/api/apps/jewellery/category/${slug}`
     );
     return response.data;
   }

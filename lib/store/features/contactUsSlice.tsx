@@ -1,3 +1,4 @@
+import { API_HOST } from "@/lib/utils";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -12,7 +13,7 @@ export const contactUsapi = createAsyncThunk<any, any>(
   async (data: any, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `https://rising-admin.vercel.app/api/apps/contact`,
+        `${API_HOST}/api/apps/contact`,
         data
       );
       return response.data;

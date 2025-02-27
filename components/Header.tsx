@@ -243,7 +243,7 @@ export function Header() {
           {/* Right side buttons with improved scaling */}
           <div className="flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.1 }}>
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setShowSearch(!showSearch)}
@@ -256,7 +256,7 @@ export function Header() {
                 ) : (
                   <Search className="h-5 w-5" />
                 )}
-              </Button>
+              </Button> */}
             </motion.div>
             <Link href="/wishlist">
               <motion.div whileHover={{ scale: 1.1 }}>

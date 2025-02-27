@@ -412,7 +412,10 @@ function ProductCard({ diamond, loading, index, handleInquiry, isInWishlist, tog
                 className="w-full font-medium bg-green-500 hover:bg-green-500/90 text-white 
                       dark:bg-green-600 dark:hover:bg-green-600/90 dark:text-white group/button
                       transition-all duration-300 text-sm"
-                onClick={() => handleInquiry(diamond.diamondName)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleInquiry(diamond.diamondName)
+                }}
               >
                 <svg
                   viewBox="0 0 24 24"

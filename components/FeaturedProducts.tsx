@@ -24,26 +24,34 @@ export function FeaturedProducts() {
   const { fetchJewelleryCollectionData: allProducts, loading: storeLoading } = useSelector(
     (state: RootState) => state.jewellery
   )
-  console.log("<<<<<<======products======>>>>>>", products);
   // Function to fetch and shuffle products
   const fetchAndShuffleProducts = async () => {
     try {
       setLoading(true)
-      await dispatch(fetchJewelleryCollection())
-
-      if (allProducts) {
-        if (allProducts.length <= 3) {
-          // If 3 or fewer products, show all of them
-          setProducts(allProducts)
+      const response = await dispatch(fetchJewelleryCollection()).unwrap()
+      console.log("response :==> ", response);
+      if (response?.length) {
+        if (response.length <= 3) {
+          setProducts(response)
         } else {
-          // If more than 3 products, randomly select 3s
-          const selectedItems = allProducts?.length > 10
-            ? allProducts?.sort(() => 0.5 - Math.random()).slice(0, 3)  // If length > 10, pick 6 random allProducts?
-            : allProducts?.slice(0, Math.min(3, allProducts?.length));  // Else, take all available items (up to 3)
+          const selectedItems = response.length > 10
+            ? response.sort(() => 0.5 - Math.random()).slice(0, 3)
+            : response.slice(0, Math.min(3, response.length))
 
           setProducts(selectedItems)
         }
       }
+      // if (allProducts) {
+      //   if (allProducts.length <= 3) {
+      //     setProducts(allProducts)
+      //   } else {
+      //     const selectedItems = allProducts?.length > 10
+      //       ? allProducts?.sort(() => 0.5 - Math.random()).slice(0, 3) 
+      //       : allProducts?.slice(0, Math.min(3, allProducts?.length));
+
+      //     setProducts(selectedItems)
+      //   }
+      // }
     } catch (error) {
       console.error('Error fetching products:', error)
       setProducts([])
@@ -55,7 +63,6 @@ export function FeaturedProducts() {
   // Effect to update products when store data changes
   useEffect(() => {
     if (allProducts) {
-      // console.log("<<<<<<======allProducts 100======>>>>>>", allProducts);
       if (allProducts.length <= 3) {
         // console.log("<<<<<<======allProducts 999======>>>>>>", allProducts);
         setProducts(allProducts)
@@ -92,7 +99,7 @@ export function FeaturedProducts() {
   const isLoading = loading || storeLoading
 
   return (
-    <section className="py-20 bg-background">
+    <section className="pt-20 pb-10 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-6 mb-16">
           <span className="text-gold font-serif italic text-xl">Unmatched Brilliance, Timeless Elegance</span>
@@ -187,7 +194,8 @@ export function FeaturedProducts() {
                         {product.jewelleryName}
                       </h3>
                       <p className="text-xs text-muted-foreground">
-                        {product.category}
+                        {/* {product.category} */}
+                        SKU : {product?.sku} | Size : {product?.size?.map((size:any) => size)}
                       </p>
                       <div className="flex items-center justify-between">
                         <p className="text-base font-semibold text-gold transition-colors duration-300 

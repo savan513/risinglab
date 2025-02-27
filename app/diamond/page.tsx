@@ -32,6 +32,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { diamonds6, mainBanner1, mainBanner7 } from "@/public/assets/img";
 import { useWishlist } from "@/hooks/useWishlist";
+import { fetchJewelleryCategory } from "@/lib/store/features/jewellerySlice";
 
 
 export default function DiamondsPage() {
@@ -42,6 +43,8 @@ export default function DiamondsPage() {
   useEffect(() => {
     const filter = { parent: "67a11386f8bba178b89e62c4" };
     dispatch(fetchDiamondCategory(filter));
+    const filter2 = { parent: "67a11573f8bba178b89e62c9" };
+        dispatch(fetchJewelleryCategory(filter2));
   }, []);
 
   // Useselector
@@ -230,10 +233,10 @@ export default function DiamondsPage() {
                     <Search className="w-4 h-4 mr-2" />
                     Search
                   </Button>
-                  <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
+                  {/* <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
                     <List className="w-4 h-4 mr-2" />
                     Filters
-                  </Button>
+                  </Button> */}
                 </>
               )}
             </div>
@@ -333,7 +336,8 @@ export default function DiamondsPage() {
 export const handleInquiry = (productId: string) => {
   // Replace with your WhatsApp number and message
   const phone = "+916354060039";
-  const message = `I'm interested in diamond product ID: ${productId}`;
+  const currentPage = window.location.href;
+  const message = `I'm interested in this product: ${productId}\nCheck it out here: ${currentPage}`;
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(
     message
   )}`;
@@ -394,7 +398,7 @@ function ProductCard({ diamond, loading, index, handleInquiry, isInWishlist, tog
                     });
                   }}
                 >
-                  <Heart 
+                  <Heart
                     className={`h-4 w-4 transition-all duration-300
                       ${isInWishlist(diamond._id)
                         ? "fill-gold text-gold scale-110"
@@ -419,7 +423,10 @@ function ProductCard({ diamond, loading, index, handleInquiry, isInWishlist, tog
                 className="w-full font-medium bg-green-500 hover:bg-green-500/90 text-white 
                       dark:bg-green-600 dark:hover:bg-green-600/90 dark:text-white group/button
                       transition-all duration-300 text-sm"
-                onClick={() => handleInquiry(diamond.name)}
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent the <Link> from triggering
+                  handleInquiry(diamond.name);
+                }}
               >
                 <svg
                   viewBox="0 0 24 24"

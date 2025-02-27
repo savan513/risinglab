@@ -553,7 +553,7 @@ export default function Blog() {
           </div>
 
           {/* Load More Button */}
-          <div className="flex justify-center mt-12">
+          {/* <div className="flex justify-center mt-12">
             <Button 
               variant="outline" 
               size="lg"
@@ -561,7 +561,7 @@ export default function Blog() {
             >
               Load More Articles
             </Button>
-          </div>
+          </div> */}
         </div>
       </section>
 

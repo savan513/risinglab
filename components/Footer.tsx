@@ -46,28 +46,28 @@ const quickLinks = [
 export const socialLinks = [
   {
     icon: Instagram,
-    href: "https://www.instagram.com/yourusername",
+    href: "https://www.instagram.com/risinglab09",
     label: "Instagram",
     color: "text-pink-500"
   },
   {
     icon: Facebook,
-    href: "https://www.facebook.com/yourusername",
+    href: "https://www.facebook.com/profile.php?id=61571412751128&mibextid=rS40aB7S9Ucbxw6v",
     label: "Facebook",
     color: "text-blue-600"
   },
   {
     icon: Youtube,
-    href: "https://www.youtube.com/@yourchannel",
+    href: "https://youtube.com/@risinglab-i2o?si=ZQH7hG1eLmK_PW-z",
     label: "YouTube",
     color: "text-red-500"
   },
-  {
-    icon: Twitter,
-    href: "https://www.Twitter.com/@yourchannel",
-    label: "Twitter",
-    color: "text-blue-500"
-  },
+  // {
+  //   icon: Twitter,
+  //   href: "https://www.Twitter.com/@yourchannel",
+  //   label: "Twitter",
+  //   color: "text-blue-500"
+  // },
 ];
 
 export function Footer() {

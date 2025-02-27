@@ -410,7 +410,10 @@ export default function JewelleryListing({ params }: JewelleryListingProps) {
                             className="w-full font-medium bg-green-500 hover:bg-green-500/90 text-white 
                       dark:bg-green-600 dark:hover:bg-green-600/90 dark:text-white group/button
                       transition-all duration-300 text-sm"
-                            onClick={() => handleInquiry(jewellery.name)}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleInquiry(jewellery.name)
+                            }}
                           >
                             <svg
                               viewBox="0 0 24 24"

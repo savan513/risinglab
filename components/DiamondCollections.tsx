@@ -76,7 +76,7 @@ export function DiamondCollections() {
     : fetchDiamondCategoryData?.slice(0, Math.min(6, fetchDiamondCategoryData?.length));  // Else, take all available items (up to 6)
 
   return (
-    <section className="py-20 bg-background">
+    <section className="pt-20 pb-10 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-6  max-w-3xl mx-auto mb-16">
           <motion.span
