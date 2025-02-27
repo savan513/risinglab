@@ -8,7 +8,7 @@ const AdminRedirect = () => {
 
   useEffect(() => {
     // Redirect to your admin website URL
-    router.push('https://rising-admin.vercel.app/')
+    router.push('https://risinglab-admin.vercel.app/')
     // router.push(`${process.env.REACT_FRONT_URL}`)
   }, [router])
 
