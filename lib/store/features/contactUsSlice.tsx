@@ -1,4 +1,4 @@
-import { API_HOST } from "@/lib/utils";
+import { API_HOST } from "../../utils";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
