@@ -66,7 +66,7 @@ export function LuxicaPromise() {
               <span className="text-sm uppercase tracking-widest text-gold font-light">Our Value Promise</span>
               <div className="h-px w-8 bg-gold/40"></div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-4">Luxica's Promise</h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-4">Rising Lab's Promise</h2>
             <p className="text-muted-foreground max-w-xl mx-auto text-sm tracking-widest">
               We stand by our products with these guarantees for your peace of mind
             </p>
