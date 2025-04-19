@@ -1,4 +1,4 @@
-import { API_HOST } from "../../utils";
+import { API_HOST } from "@/lib/utils";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";

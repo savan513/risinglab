@@ -7,16 +7,22 @@ import { BlogSection } from "@/components/BlogSection"
 import { JewelleryCollections } from "@/components/JewelleryCollections"
 import { DiamondCollections } from "@/components/DiamondCollections"
 import { ClientTestimonials } from "@/components/ClientTestimonials"
+import { ShippingBenefits } from "@/components/ShippingBenefits"
+import { LuxicaPromise } from "@/components/LuxicaPromise"
+import { BuybackPolicy } from "@/components/BuybackPolicy"
 
 export default function Home() {
   return (
     <>
       <main>
         <HeroSwiper />
+        <ShippingBenefits />
         <DesignSection />
-        <FeaturedProducts />
+        {/* <FeaturedProducts /> */}
         <DiamondCollections />
         <JewelleryCollections />
+        <LuxicaPromise />
+        <BuybackPolicy />
         <CallToAction />
         <InstagramFeed />
         <ClientTestimonials />

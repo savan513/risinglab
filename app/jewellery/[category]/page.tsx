@@ -114,14 +114,14 @@ export default function JewelleryListing({ params }: JewelleryListingProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center lg:text-left space-y-4 md:space-y-6 pt-16 md:pt-0"
+              className="text-center lg:text-left space-y-4 md:space-y-6 pt-10 sm:pt-16 lg:pt-4"
             >
               <nav className="hidden sm:flex items-center gap-3 text-white/60 mb-4 md:mb-8">
                 <Link href="/" className="hover:text-gold transition-colors">HOME</Link>
                 <span>/</span>
                 <Link href="/jewellery" className="hover:text-gold transition-colors">JEWELLERY</Link>
                 <span>/</span>
-                <span className="text-gold">{categoryTitle}</span>
+                <span className="text-gold">{categoryTitle?.toLocaleUpperCase()}</span>
               </nav>
 
               <div className="space-y-4 md:space-y-6">

@@ -5,6 +5,8 @@ import { motion } from "framer-motion"
 import { Star } from "lucide-react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Pagination, Navigation } from "swiper/modules"
+import { clientImg1, clientImg2, clientImg3, clientImg4, clientImg5, clientImg6, clientImg7, clientImg8 } from "@/public/assets/img"
+import { StaticImageData } from "next/image"
 
 import "swiper/css"
 import "swiper/css/pagination"
@@ -14,38 +16,74 @@ const testimonials = [
   {
     id: 1,
     name: "Helen Signy",
-    role: "Happy Customer",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+    role: "Engagement Ring Customer",
+    image: clientImg1,
     rating: 5,
     content:
-      "Breakfast agreeable incommode departure it an. By ignorant at on wondered relation. Enough at tastes really so cousin am of. Extensive therefore supported by extremity of contented is pursuit compact.",
+      "The diamond engagement ring I purchased exceeded all my expectations. The brilliance and clarity of the stone is absolutely remarkable, and the setting perfectly showcases its beauty.",
   },
   {
     id: 2,
     name: "Sarah Johnson",
-    role: "Loyal Client",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
+    role: "Diamond Collector",
+    image: clientImg2,
     rating: 5,
     content:
-      "The quality and craftsmanship of their jewelry is exceptional. Their attention to detail and customer service made my experience truly memorable.",
+      "The quality and craftsmanship of their jewelry is exceptional. Their attention to detail and personalized service made finding my perfect anniversary diamond truly memorable.",
   },
   {
     id: 3,
     name: "Emily Parker",
-    role: "Verified Buyer",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+    role: "First-time Buyer",
+    image: clientImg3,
     rating: 5,
     content:
-      "I was amazed by the stunning collection of diamonds. The expertise and guidance provided helped me find the perfect piece for my special occasion.",
+      "I was amazed by the stunning collection of diamonds. The expertise and guidance provided helped me find the perfect piece for my wedding day without exceeding my budget.",
   },
   {
     id: 4,
     name: "Rachel Chen",
-    role: "Regular Customer",
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=200&q=80",
+    role: "Anniversary Gift",
+    image: clientImg4,
     rating: 5,
     content:
-      "The attention to detail in every piece is remarkable. From selection to delivery, the entire experience was nothing short of exceptional.",
+      "The attention to detail in every piece is remarkable. The tennis bracelet I purchased for our anniversary sparkles with incredible brilliance and has become my wife's favorite piece.",
+  },
+  {
+    id: 5,
+    name: "Michael Thompson",
+    role: "Custom Design Client",
+    image: clientImg5,
+    rating: 5,
+    content:
+      "Working with their custom design team was a pleasure. They transformed my vision into a stunning diamond pendant that perfectly captures my personal style and family heritage.",
+  },
+  {
+    id: 6,
+    name: "Jessica Williams",
+    role: "Luxury Watch Buyer",
+    image: clientImg6,
+    rating: 5,
+    content:
+      "Their selection of luxury watches with diamond accents is unparalleled. The timepiece I purchased is not only precise but a true work of art that I'll cherish for generations.",
+  },
+  {
+    id: 7,
+    name: "David Martinez",
+    role: "Investment Buyer",
+    image: clientImg7,
+    rating: 5,
+    content:
+      "As someone who views diamonds as investments, I appreciate their transparency about sourcing and certification. Their expertise helped me select stones with excellent long-term value.",
+  },
+  {
+    id: 8,
+    name: "Olivia Taylor",
+    role: "Repeat Customer",
+    image: clientImg8,
+    rating: 5,
+    content:
+      "I've purchased multiple pieces over the years, and the consistency in quality and service is why I keep returning. Their diamond earrings remain as brilliant today as when I first bought them.",
   },
 ]
 
@@ -64,7 +102,6 @@ export function ClientTestimonials() {
           <div className="relative px-12">
             <Swiper
               spaceBetween={30}
-              centeredSlides={true}
               autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
@@ -89,12 +126,15 @@ export function ClientTestimonials() {
                     className="pb-16"
                   >
                     <div className="flex flex-col items-center max-w-3xl mx-auto">
-                      <div className="w-24 h-24 rounded-full overflow-hidden mb-6 relative border-2 border-gold">
+                      <div className="w-28 h-28 rounded-full overflow-hidden mb-6 relative border-2 border-gold shadow-lg">
                         <Image
-                          src={testimonial.image || "/placeholder.svg"}
+                          src={testimonial.image}
                           alt={testimonial.name}
                           fill
-                          className="object-cover"
+                          sizes="(max-width: 768px) 100px, 112px"
+                          className="object-cover object-center"
+                          priority
+                          style={{ objectPosition: "50% 30%" }}
                         />
                       </div>
 

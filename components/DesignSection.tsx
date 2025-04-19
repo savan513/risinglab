@@ -5,7 +5,7 @@ import { diamondsInstagram3, diamondsInstagram9, mainBanner2 } from "@/public/as
 
 export function DesignSection() {
   return (
-    <section className="w-full py-20 bg-background">
+    <section className="w-full py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative space-y-4">

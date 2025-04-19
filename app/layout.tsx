@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Providers } from "./Providers"
 import { Metadata } from "next"
+import WhatsAppButton from "@/components/WhatsAppButton"
 
 import "./globals.css"
 // Import Swiper styles
@@ -45,6 +46,7 @@ export default function RootLayout({
             {/* <Navbar /> */}
             <main className="flex-1 mt-">{children}</main>
             <Footer />
+            <WhatsAppButton />
           </ThemeProvider>
         </Providers>
       </body>

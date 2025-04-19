@@ -18,6 +18,16 @@ import diamondsInstagram7 from "./instagram/diamond-7-instagram.webp";
 import diamondsInstagram8 from "./instagram/diamond-8-instagram.jpg";
 import diamondsInstagram9 from "./instagram/diamond-9-instagram.png";
 
+// Client images
+import clientImg1 from "./client-img/freepik__the-style-is-candid-image-photography-with-natural__35846.jpeg";
+import clientImg2 from "./client-img/freepik__the-style-is-candid-image-photography-with-natural__35847.jpeg";
+import clientImg3 from "./client-img/freepik__the-style-is-candid-image-photography-with-natural__35848.jpeg";
+import clientImg4 from "./client-img/freepik__the-style-is-candid-image-photography-with-natural__35849.jpeg";
+import clientImg5 from "./client-img/freepik__the-style-is-candid-image-photography-with-natural__35850.jpeg";
+import clientImg6 from "./client-img/freepik__the-style-is-candid-image-photography-with-natural__35851.jpeg";
+import clientImg7 from "./client-img/freepik__the-style-is-candid-image-photography-with-natural__35852.jpeg";
+import clientImg8 from "./client-img/freepik__the-style-is-candid-image-photography-with-natural__35853.jpeg";
+
 // Main banner images
 import mainBanner1 from "./main-banner/main-banner-1.jpg";
 import mainBanner2 from "./main-banner/main-banner-2.jpg";
@@ -56,10 +66,19 @@ export {
     diamondsInstagram4,
     diamondsInstagram5,
     diamondsInstagram6,
-
     diamondsInstagram7,
     diamondsInstagram8,
     diamondsInstagram9,
+
+    // Client images
+    clientImg1,
+    clientImg2,
+    clientImg3,
+    clientImg4,
+    clientImg5,
+    clientImg6,
+    clientImg7,
+    clientImg8,
 
     // Main banner images
     mainBanner1,
