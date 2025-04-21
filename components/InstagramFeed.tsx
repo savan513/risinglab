@@ -102,7 +102,7 @@ export function InstagramFeed() {
             size="lg"
             className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
           >
-            <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <Link href="https://www.instagram.com/risinglab09" target="_blank" rel="noopener noreferrer">
               <Instagram className="w-5 h-5 mr-2" />
               Follow Us on Instagram
             </Link>

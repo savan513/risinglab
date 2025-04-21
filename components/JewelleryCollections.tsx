@@ -107,7 +107,8 @@ export function JewelleryCollections() {
   const skeletonArray = Array(getSkeletonCount()).fill(null); // Multiply by 2 for multiple rows
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    // <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section className="pt-20 pb-10 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-6 max-w-3xl mx-auto mb-16">
           <motion.span
@@ -192,7 +193,7 @@ export function JewelleryCollections() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <Link href={`/jewellery/${collection.slug}`}>
-                      <article className="group bg-white dark:bg-gray-900 rounded-xl p-4 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                      <article className="group bg-gold/5 dark:bg-gray-900 rounded-xl p-4 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                         <div className="relative">
                           {/* Image */}
                           <div className="aspect-[16/12] relative overflow-hidden">

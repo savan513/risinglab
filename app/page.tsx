@@ -19,8 +19,8 @@ export default function Home() {
         <ShippingBenefits />
         <DesignSection />
         {/* <FeaturedProducts /> */}
-        <DiamondCollections />
         <JewelleryCollections />
+        <DiamondCollections />
         <LuxicaPromise />
         <BuybackPolicy />
         <CallToAction />

@@ -73,51 +73,6 @@ const CollectionSkeleton = () => (
   </div>
 );
 
-const collections = [
-  {
-    id: 1,
-    title: "NATURAL DIAMONDS",
-    image: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923",
-    href: "/diamonds/natural",
-    description: "Timeless beauty formed by nature",
-  },
-  {
-    id: 2,
-    title: "LAB GROWN DIAMONDS",
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f",
-    href: "/diamonds/lab-grown",
-    description: "Sustainable brilliance, ethically created",
-  },
-  {
-    id: 3,
-    title: "FANCY SHAPE DIAMONDS",
-    image: "https://images.unsplash.com/photo-1608042314453-ae338d80c427",
-    href: "/diamonds/fancy-shape",
-    description: "Unique cuts for distinctive style",
-  },
-  {
-    id: 4,
-    title: "FANCY COLOR DIAMONDS",
-    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e",
-    href: "/diamonds/fancy-color",
-    description: "Rare and vibrant natural hues",
-  },
-  {
-    id: 5,
-    title: "LOOSE DIAMONDS",
-    image: "https://images.unsplash.com/photo-1603255466024-2c0802ad6218",
-    href: "/diamonds/loose",
-    description: "Select your perfect stone",
-  },
-  {
-    id: 6,
-    title: "CERTIFIED DIAMONDS",
-    image: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923",
-    href: "/diamonds/certified",
-    description: "Quality assured by experts",
-  },
-]
-
 export function DiamondCollections() {
   // dispatch hook
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -152,7 +107,8 @@ export function DiamondCollections() {
   const skeletonArray = Array(getSkeletonCount()).fill(null);
 
   return (
-    <section className="pt-20 pb-10 bg-background">
+    // <section className="pt-20 pb-10 bg-background">
+    <section className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-6  max-w-3xl mx-auto mb-16">
           <motion.span
@@ -239,7 +195,7 @@ export function DiamondCollections() {
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
                       <Link href={`/diamond/${collection?.slug}`}>
-                        <article className="group bg-gold/5 dark:bg-gray-900 rounded-xl p-4 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                        <article className="group bg-white dark:bg-gray-900 rounded-xl p-4 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                           <div className="relative">
                             {/* Image */}
                             <div className="aspect-[16/12] relative overflow-hidden">

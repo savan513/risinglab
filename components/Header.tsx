@@ -85,16 +85,16 @@ export function Header() {
   const navItems = [
     { href: "/", label: "HOME" },
     {
-      href: "/diamond",
-      label: "DIAMONDS",
-      hasDropdown: true,
-      dropdownItems: diamondDropdownItems,
-    },
-    {
       href: "/jewellery",
       label: "JEWELLERY",
       hasDropdown: true,
       dropdownItems: jewelleryDropdownItems,
+    },
+    {
+      href: "/diamond",
+      label: "DIAMONDS",
+      hasDropdown: true,
+      dropdownItems: diamondDropdownItems,
     },
     { href: "/about", label: "ABOUT US" },
     { href: "/contact", label: "CONTACT US" },
@@ -181,7 +181,7 @@ export function Header() {
               >
                 <Link
                   href={item.href}
-                  className={`text-sm tracking-wide transition-all duration-300 flex items-center
+                  className={`text-sm tracking-wide transition-all duration-300 flex items-center font-semibold
                     ${
                       scrolled
                         ? "text-foreground hover:text-gold"
@@ -227,7 +227,7 @@ export function Header() {
                             </span>
                             <motion.div
                               className="absolute inset-0 bg-gold/5 opacity-0 group-hover/item:opacity-100 
-                                transition-opacity duration-200"
+                                transition-opacity duration-200 font-semibold"
                               layoutId={`dropdown-hover-${item.label}`}
                             />
                           </Link>
