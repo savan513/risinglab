@@ -10,7 +10,7 @@ const initialState: any = {
 
 export const contactUsapi = createAsyncThunk<any, any>(
   "contact/contactUsapi",
-  async (data: any, { rejectWithValue }) => {
+  async ({data}: any, { rejectWithValue }) => {
     try {
       const response = await axios.post(
         `${API_HOST}/api/apps/contact`,
