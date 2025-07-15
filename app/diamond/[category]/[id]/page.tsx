@@ -15,6 +15,7 @@ import { socialLinks } from "@/components/Footer"
 import { cn } from "@/lib/utils"
 import { useWishlist } from "@/hooks/useWishlist"
 import { handleInquiry } from "../../page"
+import { MediaRenderer } from "@/components/ui/media-renderer";
 
 interface DiamondDetailProps {
   params: {
@@ -112,7 +113,7 @@ export default function DiamondDetail({ params }: DiamondDetailProps) {
               onClick={() => setIsZoomed(!isZoomed)}
               whileHover={{ scale: isZoomed ? 1 : 1.02 }}
             >
-              <Image
+              <MediaRenderer
                 src={currentDiamond?.images[selectedImage] || "/placeholder.svg"}
                 alt={currentDiamond?.diamondName}
                 fill
@@ -170,7 +171,7 @@ export default function DiamondDetail({ params }: DiamondDetailProps) {
                     whileHover={{ scale: 1.05 }}
                     onClick={() => setSelectedImage(index)}
                   >
-                    <Image
+                    <MediaRenderer
                       src={image || "/placeholder.svg"}
                       alt={`${currentDiamond?.diamondName} - ${index + 1}`}
                       fill

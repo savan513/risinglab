@@ -33,6 +33,7 @@ import { motion } from "framer-motion";
 import { diamonds6, mainBanner1, mainBanner7 } from "@/public/assets/img";
 import { useWishlist } from "@/hooks/useWishlist";
 import { fetchJewelleryCategory } from "@/lib/store/features/jewellerySlice";
+import { MediaRenderer } from "@/components/ui/media-renderer";
 
 
 export default function DiamondsPage() {
@@ -92,8 +93,8 @@ export default function DiamondsPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] flex flex-col justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={diamonds6}
+          <MediaRenderer
+            src={diamonds6.src}
             alt="Diamond Collection"
             fill
             className="object-cover"
@@ -367,7 +368,7 @@ function ProductCard({ diamond, loading, index, handleInquiry, isInWishlist, tog
           <div className="group bg-card hover:bg-card/80 rounded-xl overflow-hidden border border-border/50 
             hover:border-gold/30 transition-all duration-300">
             <div className="relative aspect-[16/10] overflow-hidden">
-              <Image
+              <MediaRenderer
                 src={diamond.images[0] || "/placeholder.svg"}
                 alt={diamond.name}
                 fill

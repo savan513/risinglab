@@ -1,4 +1,4 @@
-import Image from "next/image"
+import { MediaRenderer } from "@/components/ui/media-renderer"
 import { Button } from "@/components/ui/button"
 
 export function AboutSection() {
@@ -7,7 +7,7 @@ export function AboutSection() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
-            <Image
+            <MediaRenderer
               src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=800&q=80"
               alt="Lab-grown diamond"
               width={800}

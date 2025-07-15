@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/sheet";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store/store";
+import { MediaRenderer } from "@/components/ui/media-renderer";
 import { LogoUrl } from "@/public/assets/img";
 
 type DropdownItem = {
@@ -136,14 +137,13 @@ export function Header() {
                   }`}
                 whileHover={{ scale: 1.05 }}
               >
-                <Image
-                  src={LogoUrl || "/placeholder.svg"}
+                <MediaRenderer
+                  src={LogoUrl.src || "/placeholder.svg"}
                   alt="The Rise of Lab Grown Diamond"
-                  fill
+                  width={180}
+                  height={100}
                   className="object-contain"
-                  sizes="(max-width: 768px) 46px, (max-width: 1024px) 62px, 78px"
                   priority
-                  quality={95}
                 />
               </motion.div>
               <div className="hidden sm:flex flex-col">
@@ -300,12 +300,11 @@ export function Header() {
                   <SheetHeader>
                     <div className="flex justify-center py-4">
                       <div className="relative w-32 h-32">
-                        <Image
-                          src={LogoUrl  || "/placeholder.svg"}
+                        <MediaRenderer
+                          src={LogoUrl.src || "/placeholder.svg"}
                           alt="The Rise of Lab Grown Diamond"
-                          fill
-                          className="object-contain"
-                          sizes="(max-width: 128px) 100vw, 128px"
+                          width={128}
+                          height={128}
                         />
                       </div>
                     </div>

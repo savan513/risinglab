@@ -1,42 +1,42 @@
 "use client"
 
-import Image from "next/image"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { Heart, MessageSquare, Instagram } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { diamondsInstagram1, diamondsInstagram2, diamondsInstagram4, diamondsInstagram5 } from "@/public/assets/img"
+import { MediaRenderer } from "@/components/ui/media-renderer";
+import { Heart, MessageSquare, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { diamondsInstagram1, diamondsInstagram2, diamondsInstagram4, diamondsInstagram5 } from "@/public/assets/img";
 
 const instagramPosts = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=800&q=80",
-    likes: 1982,
-    comments: 232,
-    link: "https://instagram.com/jennydiamonds",
+    image: diamondsInstagram1.src,
+    likes: "1.2K",
+    comments: "234",
+    link: "https://www.instagram.com/p/1",
   },
   {
     id: 2,
-    image: diamondsInstagram1,
-    likes: 185,
-    comments: 23,
-    link: "https://instagram.com/jennydiamonds",
+    image: diamondsInstagram2.src,
+    likes: "856",
+    comments: "156",
+    link: "https://www.instagram.com/p/2",
   },
   {
     id: 3,
-    image: diamondsInstagram4,
-    likes: 294,
-    comments: 56,
-    link: "https://instagram.com/jennydiamonds",
+    image: diamondsInstagram4.src,
+    likes: "2.1K",
+    comments: "342",
+    link: "https://www.instagram.com/p/3",
   },
   {
     id: 4,
-    image: diamondsInstagram5,
-    likes: 118,
-    comments: 64,
-    link: "https://instagram.com/jennydiamonds",
+    image: diamondsInstagram5.src,
+    likes: "1.5K",
+    comments: "198",
+    link: "https://www.instagram.com/p/4",
   },
-]
+];
 
 export function InstagramFeed() {
   return (
@@ -66,7 +66,7 @@ export function InstagramFeed() {
                 rel="noopener noreferrer"
                 className="group block relative aspect-square overflow-hidden"
               >
-                <Image
+                <MediaRenderer
                   src={post.image || "/placeholder.svg"}
                   alt="Instagram post"
                   fill

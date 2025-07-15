@@ -13,6 +13,7 @@ import { motion } from "framer-motion"
 import { MessageCircle, ChevronLeft, ChevronRight, ZoomIn, X, ChevronUp, ChevronDown } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { MediaRenderer } from "@/components/ui/media-renderer";
 
 interface ProductModalProps {
   isOpen: boolean
@@ -96,7 +97,7 @@ export function ProductModal({
               onClick={() => setIsZoomed(!isZoomed)}
               whileHover={{ scale: isZoomed ? 1 : 1.02 }}
             >
-              <Image
+              <MediaRenderer
                 src={images[selectedImage]}
                 alt={product.jewelleryName || product.title || "Product image"}
                 fill

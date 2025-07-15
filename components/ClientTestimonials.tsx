@@ -1,187 +1,99 @@
 "use client"
 
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Star } from "lucide-react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Autoplay, Pagination, Navigation } from "swiper/modules"
-import { clientImg1, clientImg2, clientImg3, clientImg4, clientImg5, clientImg6, clientImg7, clientImg8 } from "@/public/assets/img"
-import { StaticImageData } from "next/image"
-
-import "swiper/css"
-import "swiper/css/pagination"
-import "swiper/css/navigation"
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Helen Signy",
-    role: "Engagement Ring Customer",
-    image: clientImg1,
-    rating: 5,
-    content:
-      "The diamond engagement ring I purchased exceeded all my expectations. The brilliance and clarity of the stone is absolutely remarkable, and the setting perfectly showcases its beauty.",
-  },
-  {
-    id: 2,
-    name: "Sarah Johnson",
-    role: "Diamond Collector",
-    image: clientImg2,
-    rating: 5,
-    content:
-      "The quality and craftsmanship of their jewelry is exceptional. Their attention to detail and personalized service made finding my perfect anniversary diamond truly memorable.",
-  },
-  {
-    id: 3,
-    name: "Emily Parker",
-    role: "First-time Buyer",
-    image: clientImg3,
-    rating: 5,
-    content:
-      "I was amazed by the stunning collection of diamonds. The expertise and guidance provided helped me find the perfect piece for my wedding day without exceeding my budget.",
-  },
-  {
-    id: 4,
-    name: "Rachel Chen",
-    role: "Anniversary Gift",
-    image: clientImg4,
-    rating: 5,
-    content:
-      "The attention to detail in every piece is remarkable. The tennis bracelet I purchased for our anniversary sparkles with incredible brilliance and has become my wife's favorite piece.",
-  },
-  {
-    id: 5,
-    name: "Michael Thompson",
-    role: "Custom Design Client",
-    image: clientImg5,
-    rating: 5,
-    content:
-      "Working with their custom design team was a pleasure. They transformed my vision into a stunning diamond pendant that perfectly captures my personal style and family heritage.",
-  },
-  {
-    id: 6,
-    name: "Jessica Williams",
-    role: "Luxury Watch Buyer",
-    image: clientImg6,
-    rating: 5,
-    content:
-      "Their selection of luxury watches with diamond accents is unparalleled. The timepiece I purchased is not only precise but a true work of art that I'll cherish for generations.",
-  },
-  {
-    id: 7,
-    name: "David Martinez",
-    role: "Investment Buyer",
-    image: clientImg7,
-    rating: 5,
-    content:
-      "As someone who views diamonds as investments, I appreciate their transparency about sourcing and certification. Their expertise helped me select stones with excellent long-term value.",
-  },
-  {
-    id: 8,
-    name: "Olivia Taylor",
-    role: "Repeat Customer",
-    image: clientImg8,
-    rating: 5,
-    content:
-      "I've purchased multiple pieces over the years, and the consistency in quality and service is why I keep returning. Their diamond earrings remain as brilliant today as when I first bought them.",
-  },
-]
+import { MediaRenderer } from "@/components/ui/media-renderer";
+import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
 
 export function ClientTestimonials() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-serif mb-16">WHAT OUR CLIENTS SAY</h2>
+        <div className="text-center mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-serif mb-4"
+          >
+            What Our Clients Say
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-muted-foreground max-w-2xl mx-auto"
+          >
+            Hear from our valued customers about their experiences with our diamonds and service.
+          </motion.p>
+        </div>
 
-          <div className="relative px-12">
-            <Swiper
-              spaceBetween={30}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-              }}
-              pagination={{
-                clickable: true,
-                renderBullet: (index: any, className: any) => `<span class="${className} bg-gold"></span>`,
-              }}
-              navigation={{
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              }}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="testimonials-swiper"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-card rounded-xl p-6 relative"
             >
-              {testimonials.map((testimonial) => (
-                <SwiperSlide key={testimonial.id}>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="pb-16"
+              <Quote className="absolute top-6 right-6 w-8 h-8 text-gold opacity-20" />
+              <div className="flex items-center gap-4 mb-4">
+                <div className="relative w-16 h-16 rounded-full overflow-hidden">
+                  <MediaRenderer
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-medium">{testimonial.name}</h3>
+                  <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                </div>
+              </div>
+              <p className="text-muted-foreground">{testimonial.testimonial}</p>
+              <div className="flex items-center gap-1 mt-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg
+                    key={i}
+                    className="w-4 h-4 text-gold fill-current"
+                    viewBox="0 0 20 20"
                   >
-                    <div className="flex flex-col items-center max-w-3xl mx-auto">
-                      <div className="w-28 h-28 rounded-full overflow-hidden mb-6 relative border-2 border-gold shadow-lg">
-                        <Image
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          fill
-                          sizes="(max-width: 768px) 100px, 112px"
-                          className="object-cover object-center"
-                          priority
-                          style={{ objectPosition: "50% 30%" }}
-                        />
-                      </div>
-
-                      <div className="flex items-center space-x-1 mb-6">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-gold text-gold" />
-                        ))}
-                      </div>
-
-                      <p className="text-muted-foreground text-center mb-6 text-lg italic">"{testimonial.content}"</p>
-
-                      <div className="text-center">
-                        <h3 className="font-medium text-foreground text-xl">{testimonial.name}</h3>
-                        <p className="text-gold text-sm">- {testimonial.role}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            <div className="swiper-button-prev !text-gold after:!text-2xl" />
-            <div className="swiper-button-next !text-gold after:!text-2xl" />
-          </div>
-        </motion.div>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-
-      <style jsx global>{`
-        .testimonials-swiper .swiper-pagination-bullet {
-          width: 10px;
-          height: 10px;
-          background: rgba(212, 175, 55, 0.5);
-          opacity: 1;
-        }
-        .testimonials-swiper .swiper-pagination-bullet-active {
-          background: #D4AF37;
-        }
-        .testimonials-swiper .swiper-button-prev,
-        .testimonials-swiper .swiper-button-next {
-          color: #D4AF37;
-        }
-        .testimonials-swiper .swiper-button-prev:after,
-        .testimonials-swiper .swiper-button-next:after {
-          font-size: 24px;
-        }
-      `}</style>
     </section>
-  )
+  );
 }
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    location: "New York, USA",
+    image: "/assets/img/client-img/freepik__the-style-is-candid-image-photography-with-natural__35846.jpeg",
+    testimonial:
+      "The quality of the lab-grown diamond I purchased exceeded my expectations. The customer service was exceptional, and the entire process was smooth and transparent.",
+  },
+  {
+    name: "Michael Chen",
+    location: "Toronto, Canada",
+    image: "/assets/img/client-img/freepik__the-style-is-candid-image-photography-with-natural__35847.jpeg",
+    testimonial:
+      "I was initially skeptical about lab-grown diamonds, but Rising Lab completely changed my perspective. The diamond I bought is absolutely stunning and eco-friendly.",
+  },
+  {
+    name: "Emma Thompson",
+    location: "London, UK",
+    image: "/assets/img/client-img/freepik__the-style-is-candid-image-photography-with-natural__35848.jpeg",
+    testimonial:
+      "The attention to detail and craftsmanship is remarkable. I appreciate their commitment to sustainability without compromising on quality and beauty.",
+  },
+];
 

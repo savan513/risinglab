@@ -1,219 +1,150 @@
 "use client";
 
+import { MediaRenderer } from "@/components/ui/media-renderer";
 import Link from "next/link";
-import Image from "next/image";
-import {
-  Facebook,
-  Instagram,
-  Youtube,
-  MapPin,
-  Phone,
-  Mail,
-  Gem,
-  Twitter,
-} from "lucide-react";
-import { useTheme } from "next-themes";
-import { useSelector } from "react-redux";
-import { RootState } from "@/lib/store/store";
-import { LogoUrl } from "@/public/assets/img";
-
-const diamondLinks = [
-  { href: "/certified-diamonds", label: "Certified Diamonds" },
-  { href: "/fancy-color-diamonds", label: "Fancy Color Diamonds" },
-  { href: "/fancy-shape-diamonds", label: "Fancy Shape Diamonds" },
-  { href: "/lab-grown-diamonds", label: "Lab Grown Diamonds" },
-  { href: "/loose-diamonds", label: "Loose Diamonds" },
-  { href: "/natural-diamonds", label: "Natural Diamonds" },
-];
-
-const jewelleryLinks = [
-  { href: "/bracelet", label: "Bracelet" },
-  { href: "/earrings", label: "Earrings" },
-  { href: "/necklace", label: "Necklace" },
-  { href: "/pendant", label: "Pendant" },
-  { href: "/rings", label: "Rings" },
-  { href: "/watch", label: "Watch" },
-];
-
-const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/contact", label: "Contact us" },
-  { href: "/about", label: "About us" },
-  { href: "/blog", label: "Blog" },
-];
-
-
-export const socialLinks = [
-  {
-    icon: Instagram,
-    href: "https://www.instagram.com/risinglab09",
-    label: "Instagram",
-    color: "text-pink-500"
-  },
-  {
-    icon: Facebook,
-    href: "https://www.facebook.com/profile.php?id=61571412751128&mibextid=rS40aB7S9Ucbxw6v",
-    label: "Facebook",
-    color: "text-blue-600"
-  },
-  {
-    icon: Youtube,
-    href: "https://youtube.com/@risinglab-i2o?si=ZQH7hG1eLmK_PW-z",
-    label: "YouTube",
-    color: "text-red-500"
-  },
-  // {
-  //   icon: Twitter,
-  //   href: "https://www.Twitter.com/@yourchannel",
-  //   label: "Twitter",
-  //   color: "text-blue-500"
-  // },
-];
+import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Footer() {
-  const { theme } = useTheme();
-  // const logoUrl =
-  //   theme === "dark"
-  //     ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-02.jpg-EVZkpBnzJtBfInKjfi8Iqx2JKGnC7y.jpeg"
-  //     : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-01-XO98e4ali9WrzPwRBNS46yR8PML5pw.png";
-  // Useselector
-  const { loading, fetchDiamondCategoryData, fetchJewelleryCategoryData } =
-    useSelector((state: RootState) => ({
-      fetchDiamondCategoryData: state?.diamond?.fetchDiamondCategoryData,
-      fetchJewelleryCategoryData: state?.jewellery?.fetchJewelleryCategoryData,
-      loading: state?.diamond?.loading,
-    }));
   return (
-    <footer className="bg-background border-t">
-      <div className="container mx-auto px-4 py-12">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
-          {/* Logo and Description */}
-          <div className="sm:col-span-2 lg:col-span-3 flex flex-col items-center lg:items-start">
-            <Link
-              href="/"
-              className="block mb-6 transform hover:scale-105 transition-transform"
-            >
-              <Image
-                src={LogoUrl || "/placeholder.svg"}
-                alt="The Rise of Lab Grown Diamond"
-                width={180}
-                height={100}
-                className="object-contain"
-                priority
+    <footer className="bg-black text-white">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Logo and About */}
+          <div className="space-y-6">
+            <Link href="/" className="block w-40">
+              <MediaRenderer
+                src="/assets/img/dark-logo.png"
+                alt="Rising Lab Diamonds"
+                width={160}
+                height={48}
+                className="w-auto h-12"
               />
             </Link>
-            <p className="text-muted-foreground text-sm mb-6 text-center lg:text-left max-w-sm">
-              All The Rise Of Lab Grown Diamonds products are ethically sourced
-              and certified. Our commitment to sustainability and quality
-              defines our legacy.
+            <p className="text-gray-400 text-sm">
+              Rising Lab Diamonds offers exceptional quality lab-grown diamonds and fine jewelry.
+              Experience luxury with a conscience.
             </p>
-            <div className="flex justify-center lg:justify-start space-x-6 mb-6">
+            <div className="flex space-x-4">
               {socialLinks.map((social) => (
-                <a
-                  key={social.label}
+                <Link
+                  key={social.name}
                   href={social.href}
-                  className="transform hover:scale-110 transition-all duration-300"
-                  aria-label={social.label}
+                  className="text-gray-400 hover:text-gold transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <social.icon className={`h-6 w-6 ${social.color}`} />
-                </a>
+                  <social.icon className="w-5 h-5" />
+                </Link>
               ))}
             </div>
           </div>
 
-          {/* Navigation Links */}
-          <div className="sm:col-span-2 lg:col-span-3">
-            <h3 className="font-serif text-lg mb-4 text-center lg:text-left font-semibold">
-              DIAMONDS
-            </h3>
-            <ul className="space-y-3 text-center lg:text-left">
-              {fetchDiamondCategoryData.map((link) => (
-                <li key={link._id}>
-                  <Link
-                    href={`/diamond/${link?.slug}`}
-                    className="text-muted-foreground hover:text-gold transition-colors text-sm hover:underline"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="sm:col-span-2 lg:col-span-3">
-            <h3 className="font-serif text-lg mb-4 text-center lg:text-left font-semibold">
-              JEWELLERY
-            </h3>
-            <ul className="space-y-3 text-center lg:text-left">
-              {fetchJewelleryCategoryData.map((link) => (
-                <li key={link._id}>
-                  <Link
-                    href={`/jewellery/${link?.slug}`}
-                    className="text-muted-foreground hover:text-gold transition-colors text-sm hover:underline"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="sm:col-span-2 lg:col-span-3">
-            <h3 className="font-serif text-lg mb-4 text-center lg:text-left font-semibold">
-              QUICK LINKS
-            </h3>
-            <ul className="space-y-3 text-center lg:text-left">
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-serif mb-6">Quick Links</h3>
+            <ul className="space-y-4">
               {quickLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-gold transition-colors text-sm hover:underline"
+                    className="text-gray-400 hover:text-gold transition-colors text-sm"
                   >
-                    {link.label}
+                    {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
 
-        {/* Contact Information */}
-        <div className="mt-12 pt-8 border-t border-gold/50">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="flex items-center justify-center lg:justify-start space-x-3 text-sm text-muted-foreground group hover:text-foreground transition-colors">
-              <MapPin className="h-5 w-5 text-red-500 group-hover:scale-110 transition-transform" />
-              <span>Surat - India</span>
-            </div>
-            <div className="flex items-center justify-center lg:justify-start space-x-3 text-sm text-muted-foreground group hover:text-foreground transition-colors">
-              <Phone className="h-5 w-5 text-green-500 group-hover:scale-110 transition-transform" />
-              <span>+91 63540 60039</span>
-            </div>
-            <div className="flex items-center justify-center lg:justify-start space-x-3 text-sm text-muted-foreground group hover:text-foreground transition-colors">
-              <Mail className="h-5 w-5 text-blue-500 group-hover:scale-110 transition-transform" />
-              <a
-                href="mailto:risinglab09@gmail.com"
-                className="hover:underline"
-              >
-                risinglab09@gmail.com
-              </a>
-            </div>
+          {/* Customer Service */}
+          <div>
+            <h3 className="text-lg font-serif mb-6">Customer Service</h3>
+            <ul className="space-y-4">
+              {customerService.map((service) => (
+                <li key={service.name}>
+                  <Link
+                    href={service.href}
+                    className="text-gray-400 hover:text-gold transition-colors text-sm"
+                  >
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-lg font-serif mb-6">Newsletter</h3>
+            <p className="text-gray-400 text-sm mb-4">
+              Subscribe to receive updates, access to exclusive deals, and more.
+            </p>
+            <form className="space-y-3">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-gold text-sm"
+              />
+              <Button className="w-full bg-gold hover:bg-gold/90 text-black">
+                Subscribe
+              </Button>
+            </form>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gold/50 text-center">
-          <p className="text-sm text-muted-foreground flex items-center justify-center gap-1 flex-wrap">
-            RISING LAB - LAB Grown Diamonds © {new Date().getFullYear()} | Built
-            <span>
-              <Gem className="w-4 h-4 text-gold" />{" "}
-            </span>
-            by WebPearl
-          </p>
+        {/* Bottom Bar */}
+        <div className="mt-16 pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} Rising Lab Diamonds. All rights reserved.
+            </p>
+            <div className="flex space-x-6">
+              <Link href="/privacy-policy" className="text-gray-400 hover:text-gold transition-colors text-sm">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-400 hover:text-gold transition-colors text-sm">
+                Terms & Conditions
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
+
+export const socialLinks = [
+  {
+    name: "Facebook",
+    href: "https://facebook.com",
+    icon: Facebook,
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com",
+    icon: Instagram,
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com",
+    icon: Twitter,
+  },
+];
+
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about" },
+  { name: "Diamonds", href: "/diamond" },
+  { name: "Jewellery", href: "/jewellery" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
+];
+
+const customerService = [
+  { name: "FAQ", href: "/faq" },
+  { name: "Shipping Policy", href: "/shipping" },
+  { name: "Returns", href: "/returns" },
+  { name: "Track Order", href: "/track" },
+  { name: "Payment Options", href: "/payment" },
+];

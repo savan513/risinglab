@@ -33,6 +33,7 @@ import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { mainBanner7 } from "@/public/assets/img";
 import { ProductModal } from "@/components/ui/product-modal";
+import { MediaRenderer } from "@/components/ui/media-renderer";
 
 interface DiamondListingProps {
   params: {
@@ -97,8 +98,8 @@ export default function DiamondListing({ params }: DiamondListingProps) {
       {/* Hero Section */}
       <section className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] flex flex-col justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={mainBanner7}
+          <MediaRenderer
+            src={mainBanner7.src}
             alt="Diamond Collection"
             fill
             className="object-cover"
@@ -342,7 +343,7 @@ function ProductCard({ diamond, loading, index, handleInquiry, isInWishlist, tog
           <div className="group bg-card hover:bg-card/80 rounded-xl overflow-hidden border border-border/50 
             hover:border-gold/30 transition-all duration-300">
             <div className="relative aspect-[16/10] overflow-hidden">
-              <Image
+              <MediaRenderer
                 src={diamond.images[0] || "/placeholder.svg"}
                 alt={diamond.diamondName}
                 fill

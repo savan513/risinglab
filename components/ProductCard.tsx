@@ -1,40 +1,60 @@
-import Image from "next/image"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { MediaRenderer } from "@/components/ui/media-renderer";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { Heart } from "lucide-react";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 interface ProductCardProps {
-  id: string
-  name: string
-  price: number
-  image: string
-  category: string
+  product: any;
+  onWishlistToggle: (product: any) => void;
+  isInWishlist: boolean;
 }
 
-export function ProductCard({ id, name, price, image, category }: ProductCardProps) {
+export function ProductCard({ product, onWishlistToggle, isInWishlist }: ProductCardProps) {
   return (
-    <Link href={`/product/${id}`}>
-      <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
-        <Card className="overflow-hidden bg-background/50 backdrop-blur border-gold/20">
-          <div className="relative aspect-square">
-            <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
-          </div>
-          <CardContent className="p-4">
-            <p className="text-sm text-gold mb-1">{category}</p>
-            <h3 className="font-serif text-lg mb-2">{name}</h3>
-            <p className="text-lg font-semibold">${price.toLocaleString()}</p>
-          </CardContent>
-          <CardFooter className="p-4 pt-0">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="w-full py-2 text-sm border border-gold text-gold hover:bg-gold hover:text-black transition-colors"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="group"
+    >
+      <div className="bg-card hover:bg-card/80 rounded-xl overflow-hidden border border-border/50 hover:border-gold/30 transition-all duration-300">
+        <div className="relative aspect-[16/10] overflow-hidden">
+          <MediaRenderer
+            src={product.image || "/placeholder.svg"}
+            alt={product.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          {product.hot && (
+            <div className="absolute top-4 left-4 bg-red-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium">
+              HOT
+            </div>
+          )}
+        </div>
+
+        <div className="p-4 space-y-2">
+          <h3 className="font-serif text-lg text-foreground group-hover:text-gold transition-colors duration-300">
+            {product.title}
+          </h3>
+          <div className="flex items-center justify-between">
+            <div className="text-lg font-medium text-gold">₹{product.price}</div>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => onWishlistToggle(product)}
+              className={cn(
+                "transition-colors duration-300",
+                isInWishlist && "text-red-500 border-red-500"
+              )}
             >
-              View Details
-            </motion.button>
-          </CardFooter>
-        </Card>
-      </motion.div>
-    </Link>
-  )
+              <Heart className={cn("w-4 h-4", isInWishlist && "fill-red-500")} />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 }
 

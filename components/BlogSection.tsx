@@ -16,6 +16,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 import { blogPosts } from "@/app/blog/page"
+import { MediaRenderer } from "@/components/ui/media-renderer"
 
 
 export function BlogSection() {
@@ -99,7 +100,7 @@ export function BlogSection() {
 
                                             {/* Image */}
                                             <div className="aspect-[16/10] relative overflow-hidden">
-                                                <Image
+                                                <MediaRenderer
                                                     src={post.image || "/placeholder.svg"}
                                                     alt={post.title}
                                                     fill

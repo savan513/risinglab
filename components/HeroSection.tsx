@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { MediaRenderer } from "@/components/ui/media-renderer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -6,7 +6,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center pt-20">
       <div className="absolute inset-0 z-0">
-        <Image
+        <MediaRenderer
           src="https://sjc.microlink.io/jWaSIh3nLv7kM8ibFRnDf8p_anyvLSAs9YopivNgjmVCWakDy4RuWnVNteCzSjCpk_7_wVzhRBaTU1N8rfQesQ.jpeg"
           alt="Luxury gold necklace with red gemstones"
           fill
