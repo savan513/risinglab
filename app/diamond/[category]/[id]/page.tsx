@@ -214,7 +214,7 @@ export default function DiamondDetail({ params }: DiamondDetailProps) {
               transition={{ delay: 0.2 }}
               className="prose prose-lg dark:prose-invert max-w-none"
             >
-              <p dangerouslySetInnerHTML={{ __html: currentDiamond?.description || "" }}></p>
+              <p dangerouslySetInnerHTML={{ __html: currentDiamond?.p_description || "" }}></p>
             </motion.div>
 
             {/* Actions */}

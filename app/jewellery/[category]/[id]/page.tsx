@@ -210,7 +210,7 @@ export default function JewelleryDetail({ params }: JewellerydetailProps) {
               transition={{ delay: 0.2 }}
               className="prose prose-lg dark:prose-invert max-w-none"
             >
-              <p dangerouslySetInnerHTML={{ __html: currentJewellery?.description || "" }}></p>
+              <p dangerouslySetInnerHTML={{ __html: currentJewellery?.p_description || "" }}></p>
             </motion.div>
 
             {/* Actions */}
