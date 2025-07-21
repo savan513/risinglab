@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Facebook, Heart, Instagram, Linkedin, Search, Twitter, Youtube, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react"
@@ -113,7 +114,7 @@ export default function JewelleryDetail({ params }: JewellerydetailProps) {
               onClick={() => setIsZoomed(!isZoomed)}
               whileHover={{ scale: isZoomed ? 1 : 1.02 }}
             >
-              <Image
+              <DynamicMedia
                 src={currentJewellery?.images[selectedImage] || "/placeholder.svg"}
                 alt={currentJewellery?.jewelleryName}
                 fill
@@ -171,7 +172,7 @@ export default function JewelleryDetail({ params }: JewellerydetailProps) {
                     whileHover={{ scale: 1.05 }}
                     onClick={() => setSelectedImage(index)}
                   >
-                    <Image
+                    <DynamicMedia
                       src={image || "/placeholder.svg"}
                       alt={`${currentJewellery?.jewelleryName} - ${index + 1}`}
                       fill

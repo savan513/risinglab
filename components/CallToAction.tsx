@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { motion } from "framer-motion"
 import { Diamond, Gem } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -138,7 +139,7 @@ export function CallToAction() {
             {/* Diamond Images */}
             <div className="grid grid-cols-3 gap-4 relative">
               <div className="relative aspect-square rounded-lg overflow-hidden col-span-2 row-span-2">
-                <Image
+                <DynamicMedia
                   src={diamonds1}
                   alt="Premium diamond collection"
                   fill
@@ -149,7 +150,7 @@ export function CallToAction() {
               <div className="relative aspect-square rounded-lg overflow-hidden"
               // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
               >
-                <Image
+                <DynamicMedia
                   src={diamonds8}
                   alt="Diamond craftsmanship"
                   fill
@@ -161,7 +162,7 @@ export function CallToAction() {
               <div className="relative aspect-square rounded-lg overflow-hidden"
               // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
               >
-                <Image
+                <DynamicMedia
                   src={diamonds3}
                   alt="Diamond elegance"
                   fill
@@ -174,7 +175,7 @@ export function CallToAction() {
               <div className="relative aspect-square rounded-lg overflow-hidden"
               // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
               >
-                <Image
+                <DynamicMedia
                   src={diamonds4}
                   alt="Diamond brilliance"
                   fill
@@ -186,7 +187,7 @@ export function CallToAction() {
               <div className="relative aspect-square rounded-lg overflow-hidden"
               // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
               >
-                <Image
+                <DynamicMedia
                   src={diamonds5}
                   alt="Diamond luxury"
                   fill
@@ -197,7 +198,7 @@ export function CallToAction() {
               <div className="relative aspect-square rounded-lg overflow-hidden"
               // style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
               >
-                <Image
+                <DynamicMedia
                   src={diamonds6}
                   alt="Diamond luxury"
                   fill

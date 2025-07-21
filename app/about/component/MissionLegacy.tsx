@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { motion } from "framer-motion"
 import { diamondsInstagram1, diamondsInstagram2, diamondsInstagram3, diamondsInstagram4, diamondsInstagram6, diamondsInstagram7 } from "@/public/assets/img"
 
@@ -43,7 +44,7 @@ export function MissionLegacy() {
             {/* Main Large Image */}
             <div className="col-span-2 relative h-[350px] rounded-lg overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 group-hover:from-black/70 transition-all duration-300" />
-              <Image
+              <DynamicMedia
                 src={diamondsInstagram4}
                 alt="Lab grown diamond creation process"
                 fill
@@ -73,7 +74,7 @@ export function MissionLegacy() {
             {/* Bottom Left Image */}
             <div className="relative h-[230px] rounded-lg overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 group-hover:from-black/70 transition-all duration-300" />
-              <Image
+              <DynamicMedia
                 src={diamondsInstagram7}
                 alt="Sustainable diamond creation"
                 fill
@@ -92,7 +93,7 @@ export function MissionLegacy() {
             {/* Bottom Right Image */}
             <div className="relative h-[230px] rounded-lg overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 group-hover:from-black/70 transition-all duration-300" />
-              <Image
+              <DynamicMedia
                 src={diamondsInstagram6}
                 alt="Quality control process"
                 fill

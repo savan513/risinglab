@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -487,7 +488,7 @@ export default function Blog() {
                   {/* Image Container */}
                   <div className="relative">
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
+                    <DynamicMedia
                       src={post.image}
                       alt={post.title}
                       fill

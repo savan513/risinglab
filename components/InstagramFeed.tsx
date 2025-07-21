@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Heart, MessageSquare, Instagram } from "lucide-react"
@@ -66,7 +67,7 @@ export function InstagramFeed() {
                 rel="noopener noreferrer"
                 className="group block relative aspect-square overflow-hidden"
               >
-                <Image
+                <DynamicMedia
                   src={post.image || "/placeholder.svg"}
                   alt="Instagram post"
                   fill

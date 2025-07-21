@@ -7,6 +7,7 @@ import { GoogleMap } from "./component/GoogleMap";
 import { motion } from "framer-motion";
 import { diamonds3, diamondsInstagram3, diamondsInstagram9, mainBanner1, mainBanner10, mainBanner12, mainBanner13, mainBanner14, mainBanner2, mainBanner9 } from "@/public/assets/img";
 import Image from "next/image";
+import { DynamicMedia } from "@/components/DynamicMedia";
 
 export default function ContactPage() {
   return (
@@ -42,10 +43,11 @@ export default function ContactPage() {
           >
             {/* Main Image */}
             <div className="absolute inset-0 bg-gold/10" />
-            <img
+            <DynamicMedia
               src="https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&w=1200&q=80"
               alt="Luxury lab grown diamonds store interior"
               className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-500"
+              fill
             />
             
             {/* Decorative Image Grid */}
@@ -56,7 +58,7 @@ export default function ContactPage() {
                 transition={{ delay: 0.6 }}
                 className="relative aspect-square rounded-md overflow-hidden"
               >
-                <Image
+                <DynamicMedia
                   src={mainBanner1}
                   alt="Diamond ring"
                   className="object-cover w-full h-full"
@@ -70,7 +72,7 @@ export default function ContactPage() {
                 transition={{ delay: 0.7 }}
                 className="relative aspect-square rounded-md overflow-hidden"
               >
-                <Image
+                <DynamicMedia
                   src={diamondsInstagram9}
                   alt="Gold necklace"
                   className="object-cover w-full h-full"
@@ -84,7 +86,7 @@ export default function ContactPage() {
                 transition={{ delay: 0.8 }}
                 className="relative aspect-square rounded-md overflow-hidden"
               >
-                <Image
+                <DynamicMedia
                   src={mainBanner2}
                   alt="Diamond closeup"
                   className="object-cover w-full h-full"
@@ -98,7 +100,7 @@ export default function ContactPage() {
                 transition={{ delay: 0.9 }}
                 className="relative aspect-square rounded-md overflow-hidden"
               >
-                <Image
+                <DynamicMedia
                   src={diamondsInstagram3}
                   alt="Luxury bracelet"
                   className="object-cover w-full h-full"
