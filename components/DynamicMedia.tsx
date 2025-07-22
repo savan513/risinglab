@@ -168,10 +168,10 @@ export function DynamicMedia({
 
     if (mediaType === 'video') {
         return (
-            <div className={className} style={style} onClick={onClick} onMouseMove={onMouseMove}>
+            <div className={"group"} style={style} onClick={onClick} onMouseMove={onMouseMove}>
                 <video
                     src={currentUrl}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover ${className}`}
                     controls={controls}
                     autoPlay={autoPlay}
                     muted={muted}
@@ -187,7 +187,7 @@ export function DynamicMedia({
     }
 
     return (
-        <div className={className} style={style} onClick={onClick} onMouseMove={onMouseMove}>
+        <div className={"group"} style={style} onClick={onClick} onMouseMove={onMouseMove}>
             <Image
                 src={currentUrl}
                 alt={alt}
@@ -197,7 +197,7 @@ export function DynamicMedia({
                 priority={priority}
                 sizes={sizes}
                 quality={quality}
-                className="object-cover"
+                className={`object-cover ${className}`}
                 onError={handleError}
                 {...props}
             />
