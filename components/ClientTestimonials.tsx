@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { motion } from "framer-motion"
 import { Star } from "lucide-react"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -127,7 +128,7 @@ export function ClientTestimonials() {
                   >
                     <div className="flex flex-col items-center max-w-3xl mx-auto">
                       <div className="w-28 h-28 rounded-full overflow-hidden mb-6 relative border-2 border-gold shadow-lg">
-                        <Image
+                        <DynamicMedia
                           src={testimonial.image}
                           alt={testimonial.name}
                           fill

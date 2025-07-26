@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { motion } from "framer-motion"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Pagination, Navigation } from "swiper/modules"
@@ -44,7 +45,7 @@ export function HeroSwiper() {
     <div className="relative h-[80vh] sm:h-[80vh] md:h-[90vh] min-h-[400px] w-full">
       <Swiper
         spaceBetween={0}
-        centeredSlides={true}
+        // centeredSlides={true}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
@@ -63,7 +64,7 @@ export function HeroSwiper() {
         {slides.map((slide: any) => (
           <SwiperSlide key={slide.id}>
             <div className="relative h-full w-full">
-              <Image 
+              <DynamicMedia 
                 src={slide.image || "/placeholder.svg"} 
                 alt={slide.title} 
                 fill 

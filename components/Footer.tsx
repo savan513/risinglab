@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { DynamicMedia } from "@/components/DynamicMedia";
 import {
   Facebook,
   Instagram,
@@ -94,7 +95,7 @@ export function Footer() {
               href="/"
               className="block mb-6 transform hover:scale-105 transition-transform"
             >
-              <Image
+              <DynamicMedia
                 src={LogoUrl || "/placeholder.svg"}
                 alt="The Rise of Lab Grown Diamond"
                 width={180}

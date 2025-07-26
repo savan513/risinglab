@@ -3,6 +3,7 @@
 import { useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { motion } from "framer-motion"
 import { Swiper, SwiperSlide } from "swiper/react"
 import type { Swiper as SwiperType } from "swiper"
@@ -99,7 +100,7 @@ export function BlogSection() {
 
                                             {/* Image */}
                                             <div className="aspect-[16/10] relative overflow-hidden">
-                                                <Image
+                                                <DynamicMedia
                                                     src={post.image || "/placeholder.svg"}
                                                     alt={post.title}
                                                     fill

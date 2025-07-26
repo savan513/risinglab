@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -96,7 +97,7 @@ export function ProductModal({
               onClick={() => setIsZoomed(!isZoomed)}
               whileHover={{ scale: isZoomed ? 1 : 1.02 }}
             >
-              <Image
+              <DynamicMedia
                 src={images[selectedImage]}
                 alt={product.jewelleryName || product.title || "Product image"}
                 fill
@@ -172,7 +173,7 @@ export function ProductModal({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Image
+                  <DynamicMedia
                     src={image}
                     alt={`${product.jewelleryName || product.title || "Product"} ${index + 1}`}
                     fill

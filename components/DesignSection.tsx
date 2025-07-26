@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { diamondsInstagram3, diamondsInstagram9, mainBanner2 } from "@/public/assets/img"
@@ -11,7 +12,7 @@ export function DesignSection() {
           <div className="relative space-y-4">
             <div className="grid grid-cols-2 gap-4 items-center">
               <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
-                <Image
+                <DynamicMedia
                   src={diamondsInstagram9}
                   alt="Diamond necklace"
                   fill
@@ -20,7 +21,7 @@ export function DesignSection() {
               </div>
               <div className="space-y-4">
                 <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
-                  <Image
+                  <DynamicMedia
                     src={diamondsInstagram3}
                     alt="Diamond pendant"
                     fill
@@ -28,7 +29,7 @@ export function DesignSection() {
                   />
                 </div>
                 <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
-                  <Image
+                  <DynamicMedia
                     src={mainBanner2}
                     alt="Lab grown diamond"
                     fill

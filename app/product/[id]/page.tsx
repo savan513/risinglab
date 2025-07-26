@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import Link from "next/link"
 import { Facebook, Heart, Instagram, Linkedin, Twitter } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -74,7 +75,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           {/* Image Section */}
           <div className="space-y-6">
             <div className="relative aspect-square bg-white rounded-lg overflow-hidden">
-              <Image src={product.image || "/placeholder.svg"} alt={product.title} fill className="object-cover" />
+              <DynamicMedia src={product.image || "/placeholder.svg"} alt={product.title} fill className="object-cover" />
               {product.hot && (
                 <div className="absolute top-4 left-4">
                   <span className="inline-block bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">HOT</span>

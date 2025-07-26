@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { DynamicMedia } from "@/components/DynamicMedia";
 import {
   Grid2X2,
   Grid3X3,
@@ -96,7 +97,7 @@ export default function JewelleryListing({ params }: JewelleryListingProps) {
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] flex flex-col justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image
+          <DynamicMedia
             src={mainBanner5}
             alt="Jewellery Collection"
             fill
@@ -327,7 +328,7 @@ export default function JewelleryListing({ params }: JewelleryListingProps) {
                       <div className="bg-card hover:bg-card/80 rounded-xl overflow-hidden border border-border/50 
                         hover:border-gold/30 transition-all duration-300">
                         <div className="relative aspect-[16/10] overflow-hidden">
-                          <Image
+                          <DynamicMedia
                             src={jewellery.images[0] || "/placeholder.svg"}
                             alt={jewellery.jewelleryName}
                             fill

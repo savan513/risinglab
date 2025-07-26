@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { motion } from "framer-motion"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 
@@ -17,7 +18,7 @@ export function ProductCard({ id, name, price, image, category }: ProductCardPro
       <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
         <Card className="overflow-hidden bg-background/50 backdrop-blur border-gold/20">
           <div className="relative aspect-square">
-            <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
+            <DynamicMedia src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
           </div>
           <CardContent className="p-4">
             <p className="text-sm text-gold mb-1">{category}</p>

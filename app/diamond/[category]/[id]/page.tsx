@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Heart, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react"
@@ -112,7 +113,7 @@ export default function DiamondDetail({ params }: DiamondDetailProps) {
               onClick={() => setIsZoomed(!isZoomed)}
               whileHover={{ scale: isZoomed ? 1 : 1.02 }}
             >
-              <Image
+              <DynamicMedia
                 src={currentDiamond?.images[selectedImage] || "/placeholder.svg"}
                 alt={currentDiamond?.diamondName}
                 fill
@@ -170,7 +171,7 @@ export default function DiamondDetail({ params }: DiamondDetailProps) {
                     whileHover={{ scale: 1.05 }}
                     onClick={() => setSelectedImage(index)}
                   >
-                    <Image
+                    <DynamicMedia
                       src={image || "/placeholder.svg"}
                       alt={`${currentDiamond?.diamondName} - ${index + 1}`}
                       fill

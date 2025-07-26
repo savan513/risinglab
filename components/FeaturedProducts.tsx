@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { motion } from "framer-motion"
 import { Heart, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -144,7 +145,7 @@ export function FeaturedProducts() {
               >
                 <div className="group relative bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-border/50 dark:border-gold/20">
                   <div className="relative aspect-[3/2] overflow-hidden">
-                    <Image
+                    <DynamicMedia
                       src={product.images[0] || "/placeholder.svg"}
                       alt={product.jewelleryName}
                       fill

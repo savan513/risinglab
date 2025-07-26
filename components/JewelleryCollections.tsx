@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useDispatch, useSelector } from "react-redux"
@@ -197,7 +198,7 @@ export function JewelleryCollections() {
                         <div className="relative">
                           {/* Image */}
                           <div className="aspect-[16/12] relative overflow-hidden">
-                            <Image
+                            <DynamicMedia
                               src={collection.images[0] || "/placeholder.svg"}
                               alt={collection.name}
                               fill

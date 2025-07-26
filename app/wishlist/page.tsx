@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { X, Heart, ArrowRight } from "lucide-react"
@@ -93,7 +94,7 @@ export default function WishlistPage() {
 
                     {/* Image Section */}
                     <div className="relative aspect-[3/2] overflow-hidden">
-                      <Image
+                      <DynamicMedia
                         src={item.image}
                         alt={item.title}
                         fill

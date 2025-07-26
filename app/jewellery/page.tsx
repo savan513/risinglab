@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { DynamicMedia } from "@/components/DynamicMedia";
 import {
   ChevronLeft,
   ChevronRight,
@@ -89,7 +90,7 @@ export default function JewelleryPage() {
       <section className="relative h-[60vh] md:h-[70vh] flex flex-col justify-center overflow-hidden">
         {/* Background Image and Overlay */}
         <div className="absolute inset-0">
-          <Image
+          <DynamicMedia
             src={mainBanner8}
             alt="Jewellery Collection"
             fill
@@ -368,7 +369,7 @@ function ProductCard({ jewellery, loading, index, handleInquiry, isInWishlist, t
           <div className="group bg-card hover:bg-card/80 rounded-xl overflow-hidden border border-border/50 
             hover:border-gold/30 transition-all duration-300">
             <div className="relative aspect-[16/10] overflow-hidden">
-              <Image
+              <DynamicMedia
                 src={jewellery.images[0] || "/placeholder.svg"}
                 alt={jewellery.name}
                 fill

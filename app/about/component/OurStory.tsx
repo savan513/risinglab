@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import { motion } from "framer-motion"
 import { diamondsInstagram1, diamondsInstagram2, diamondsInstagram4 } from "@/public/assets/img"
 
@@ -17,7 +18,7 @@ export function OurStory() {
             className="relative h-[500px] rounded-lg overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
-            <Image
+            <DynamicMedia
               src={diamondsInstagram1}
               alt="Lab grown diamond craftsmanship"
               fill

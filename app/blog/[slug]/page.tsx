@@ -3,6 +3,7 @@
 import { useEffect, useMemo } from "react"
 import { useParams } from "next/navigation"
 import Image from "next/image"
+import { DynamicMedia } from "@/components/DynamicMedia"
 import Link from "next/link"
 import { useDispatch, useSelector } from "react-redux"
 import type { AppDispatch, RootState } from "@/lib/store/store"
@@ -38,7 +39,7 @@ export default function BlogPost() {
     <div className="min-h-screen bg-white dark:bg-gray-900 pt-20 transition-colors duration-300">
       {/* Header Banner */}
       <div className="relative h-[300px] bg-gradient-to-r from-gray-900 to-gray-800">
-        <Image
+        <DynamicMedia
           src={currentPost.image || "/placeholder.svg"}
           alt={currentPost.title}
           fill
@@ -134,7 +135,7 @@ export default function BlogPost() {
               <div className="space-y-4">
                 {blogPosts.slice(0, 3).map((post) => ( // Display first 3 posts as recent
                   <Link key={post.id} href={`/blog/${post.slug}`} className="flex items-center gap-4 hover:text-gold transition-colors">
-                    <Image
+                    <DynamicMedia
                       src={post.image || "/placeholder.svg"}
                       alt={post.title}
                       width={50}
@@ -163,7 +164,7 @@ export default function BlogPost() {
                 {mostPopularPosts.map((post) => (
                   <Link key={post.id} href={`/blog/${post.slug}`} className="block bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div className="relative h-48">
-                      <Image
+                      <DynamicMedia
                         src={post.image || "/placeholder.svg"}
                         alt={post.title}
                         fill
